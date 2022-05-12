@@ -11,28 +11,13 @@
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
 
-<style>
+<style type="text/css">
 header {
 	height: 56px;
 }
-
-main {
-	min-height: 600px;
-	background: url("images/bg-masthead.jpg") no-repeat center center;
-}
-
-.search_bar {
-	width: 550px;
-}
-
-h1 {
-	text-align: center;
-	margin-top: 200px;
-	font-size: 90px;
-}
 </style>
 </head>
-<body class="d-flex flex-column min-vh-100">
+<body>
 	<header>
 		<nav class="navbar navbar-light bg-light fixed-top">
 			<div class="container-fluid">
@@ -80,26 +65,7 @@ h1 {
 			</div>
 		</nav>
 	</header>
-
-	<main>
-		<div class="container-fluid">
-			<h1>title</h1>
-			<div class="input-group p-2 mb-3 search_bar mx-auto mt-5">
-				<input type="text" class="form-control"
-					placeholder="Recipient's username"
-					aria-label="Recipient's username" aria-describedby="button-addon2">
-				<button class="btn btn-primary" type="button" id="button-addon2">Button</button>
-			</div>
-		</div>
-	</main>
-
-	<footer id="sticky-footer"
-		class="flex-shrink-0 py-4 bg-dark text-white-50 fixed-bottom">
-		<div class="container text-center">
-			<small>Copyright &copy; Your Website</small>
-		</div>
-	</footer>
-
+	
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"

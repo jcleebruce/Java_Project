@@ -11,6 +11,9 @@
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
 
+<jsp:include page="../layout/header_ver2.jsp"></jsp:include>
+<jsp:include page="../layout/footer.jsp"></jsp:include>
+
 <style type="text/css">
 header {
 	height: 160px;
@@ -53,14 +56,7 @@ body {
 </style>
 </head>
 <body class="text-center">
-	<header>
-		<nav class="navbar navbar-light bg-light fixed-top">
-			<div class="container-fluid justify-content-center">
-				<a class="navbar-brand" href="#">title</a>
-			</div>
-		</nav>
-	</header>
-
+	
 	<main class="form-signin">
 		<form class=>
 			<img class="mb-4 mx-auto" src="*" alt="" width="72" height="57">
@@ -87,13 +83,6 @@ body {
 		</form>
 	</main>
 
-
-	<footer id="sticky-footer"
-		class="flex-shrink-0 py-4 bg-dark text-white-50 fixed-bottom">
-		<div class="container text-center">
-			<small>Copyright &copy; Your Website</small>
-		</div>
-	</footer>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
