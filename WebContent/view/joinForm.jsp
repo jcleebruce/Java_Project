@@ -16,6 +16,9 @@
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
 
+<jsp:include page="../layout/header_ver2.jsp"></jsp:include>
+<jsp:include page="../layout/footer.jsp"></jsp:include>
+
 <style type="text/css">
 header {
 	height: 25px;
@@ -45,14 +48,6 @@ body {
 </head>
 <body>
 <body>
-	<header>
-		<nav class="navbar navbar-light bg-light fixed-top">
-			<div class="container-fluid justify-content-center">
-				<a class="navbar-brand" href="#">title</a>
-			</div>
-		</nav>
-	</header>
-
 	<main>
 		<div class="container">
 			<div class="input-form-backgroud row">
@@ -128,12 +123,6 @@ body {
 		</div>
 	</main>
 
-	<footer id="sticky-footer"
-		class="flex-shrink-0 py-4 bg-dark text-white-50 fixed-bottom">
-		<div class="container text-center">
-			<small>Copyright &copy; Your Website</small>
-		</div>
-	</footer>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
