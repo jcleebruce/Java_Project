@@ -20,7 +20,7 @@ header {
 
 <body>
 	<header>
-		<nav class="navbar navbar-light bg-light fixed-top">
+		<nav class="navbar navbar-light fixed-top">
 			<div class="container-fluid justify-content-center">
 				<a class="navbar-brand" href="#">title</a>
 			</div>
