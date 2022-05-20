@@ -13,6 +13,15 @@
 
 <%-- <jsp:include page="../layout/header.jsp"></jsp:include>
 <jsp:include page="../layout/footer.jsp"></jsp:include> --%>
+<style>
+.row{
+    width: 100%;
+    padding-right: var(--bs-gutter-x,.75rem);
+    padding-left: var(--bs-gutter-x,.75rem);
+    margin-right: auto;
+    margin-left: auto;
+}
+</style>
 </head>
 <body>
 
