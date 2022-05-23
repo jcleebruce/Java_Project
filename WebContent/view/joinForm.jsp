@@ -14,7 +14,7 @@
 <jsp:include page="../layout/header_ver2.jsp"></jsp:include>
 <jsp:include page="../layout/footer.jsp"></jsp:include>
 
-<link rel="stylesheet" type="text/css" href="../css/joinForm.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/joinForm.css">
 <style type="text/css">
 header {
 	height: 30px;
