@@ -17,7 +17,7 @@
 <style>
 main {
 	min-height: 600px;
-	background: url("../images/bg-masthead.jpg") no-repeat center center;
+	background: url("images/bg-masthead.jpg") no-repeat center center;
 }
 
 .search_bar {
