@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="dao.BoardDAO" %>
+<%@page import="Board.BoardBean"%>
+<%@page import="java.util.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +20,34 @@
 <link rel="stylesheet" type="text/css" href="../css/myPage_review.css">
 </head>
 <body>
-
+<%
+		// 화면에 보여질 게시글의 개수를 지정
+		int pageSize=10;
+	
+	    // 현재 카운터를 클리어한 번호값을 읽어 옴
+	    String pageNum=request.getParameter("pageNum");
+	    
+	    if(pageNum == null){
+	    	pageNum="1";
+	    }
+	    
+	    int count=0; // 전체글의 개수 저장
+	    int number=0; // 페이지 넘버링
+	    
+	    int currentPage=Integer.parseInt(pageNum);
+	    BoardDAO bdao=new BoardDAO();
+	    count=bdao.getAllCount();
+	    
+	    // 현재 페이지에 보여 줄 시작 번호를 설정 ==> 데이터 베이스에서 불러올 시작 번호
+	    int startRow=(currentPage-1)*pageSize+1;//1 11 21 31 
+	    int endRow=currentPage*pageSize;//10 20 30 40
+	    
+	    // 최신글 10개를 기준으로 게시글을 리턴 받아주는 메서드 호출
+	    Vector<BoardBean> vec=bdao.getAllBoard(startRow, endRow);
+	    
+	    // 테이블에 표시할 번호 지정
+	    number=count-(currentPage-1)*pageSize;
+	%>
 	<div
 		class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 		<h1 class="h3">자유게시판</h1>
