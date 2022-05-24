@@ -4,26 +4,22 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import org.springframework.stereotype.Component;
+import org.springframework.web.context.annotation.RequestScope;
+import org.springframework.web.context.annotation.SessionScope;
 
 import model.MemberVO;
 import util.DBManager;
 
+@Component
+@RequestScope
 public class MemberDAO {
-	final String tbl = "tbl_member";
-	
-	private MemberDAO() {	
-	}
-	
-	private static MemberDAO instance = new MemberDAO();
-	
-	public static MemberDAO getInstance() {
-		return instance;
-	}
-	
+	final String tbl = "member";
+		
 	//사용자 존재 유무
 	public int isExistId(String userId) {
 		int result = -1;
-		String sql="select \"id\" from " + tbl + " where \"id\"=?";
+		String sql="select id from " + tbl + " where id=?";
 		
 		Connection conn=null;
 		PreparedStatement pstmt=null;
@@ -44,12 +40,7 @@ public class MemberDAO {
 			e.printStackTrace();
 		} finally {
 			try {
-				if(rs != null)
-					rs.close();
-				if(pstmt != null)
-					pstmt.close();
-				if(conn != null)
-					conn.close();
+				DBManager.close(conn, pstmt, rs);
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
@@ -61,7 +52,7 @@ public class MemberDAO {
 	//닉네임 존재 유무
 	public int isExistNickName(String nickName) {
 		int result = -1;
-		String sql="select \"nickName\" from " + tbl + " where \"nickName\"=?";
+		String sql="select nickName from " + tbl + " where nickName=?";
 		
 		Connection conn=null;
 		PreparedStatement pstmt=null;
@@ -82,12 +73,7 @@ public class MemberDAO {
 			e.printStackTrace();
 		} finally {
 			try {
-				if(rs != null)
-					rs.close();
-				if(pstmt != null)
-					pstmt.close();
-				if(conn != null)
-					conn.close();
+				DBManager.close(conn, pstmt, rs);
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
@@ -99,7 +85,7 @@ public class MemberDAO {
 	//사용자 인증
 	public int login(String userId, String pwd) {
 		int result = -1;
-		String sql = "select \"pwd\" from " + tbl + " where \"id\"=?";
+		String sql = "select pwd from " + tbl + " where id=?";
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -124,12 +110,7 @@ public class MemberDAO {
 			e.printStackTrace();
 		} finally {
 			try {
-				if(rs != null)
-					rs.close();
-				if(pstmt != null)
-					pstmt.close();
-				if(conn != null)
-					conn.close();
+				DBManager.close(conn, pstmt, rs);
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
@@ -168,10 +149,7 @@ public class MemberDAO {
 			e.printStackTrace();
 		} finally {
 			try {
-				if(pstmt != null)
-					pstmt.close();
-				if(conn != null)
-					conn.close();
+				DBManager.close(conn, pstmt);
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
@@ -183,7 +161,7 @@ public class MemberDAO {
 	//Read
 	public MemberVO read(String userId) {
 		MemberVO mvo = null;
-		String sql = "select * from " + tbl + " where \"id\"=?";
+		String sql = "select * from " + tbl + " where id=?";
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -213,12 +191,7 @@ public class MemberDAO {
 			e.printStackTrace();
 		} finally {
 			try {
-				if(rs != null)
-					rs.close();
-				if(pstmt != null)
-					pstmt.close();
-				if(conn != null)
-					conn.close();
+				DBManager.close(conn, pstmt, rs);
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
@@ -231,7 +204,7 @@ public class MemberDAO {
 	public int update(MemberVO mvo) {
 		int result = -1;
 		int idx = 1;
-		String sql = "update " + tbl + " set \"pwd\"=?, \"userName\"=?, \"nickName\"=?, \"email\"=?, \"address1\"=?, \"address2\"=?, \"phone\"=?, \"joinRoute\"=?, \"chargingType\"=?, \"admin\"=? where \"id\"=?";
+		String sql = "update " + tbl + " set pwd=?, userName=?, nickName=?, email=?, address1=?, address2=?, phone=?, joinRoute=?, chargingType=?, admin=? where id=?";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -256,10 +229,7 @@ public class MemberDAO {
 			e.printStackTrace();
 		} finally {
 			try {
-				if(pstmt != null)
-					pstmt.close();
-				if(conn != null)
-					conn.close();
+				DBManager.close(conn, pstmt);
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
@@ -271,7 +241,7 @@ public class MemberDAO {
 	//Delete
 	public int delete(String userId) {
 		int result = -1;
-		String sql = "delete from " + tbl + " where \"id\"=?";
+		String sql = "delete from " + tbl + " where id=?";
 		
 		Connection conn=null;
 		PreparedStatement pstmt=null;
@@ -286,17 +256,45 @@ public class MemberDAO {
 			e.printStackTrace();
 		} finally {
 			try {
-				if(rs != null)
-					rs.close();
-				if(pstmt != null)
-					pstmt.close();
-				if(conn != null)
-					conn.close();
+				DBManager.close(conn, pstmt, rs);
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
 		}
 		
 		return result;		
+	}
+	
+	public MemberVO readId(String userId) {
+		MemberVO mvo = null;
+		String sql = "select id,nickName,admin from " + tbl + " where id=?";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			rs = pstmt.executeQuery();
+
+			if(rs.next()) {
+				mvo = new MemberVO();
+				mvo.setId(rs.getString("id"));
+				mvo.setNickName(rs.getString("nickName"));
+				mvo.setAdmin(rs.getInt("admin"));
+			}			
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				DBManager.close(conn, pstmt, rs);
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return mvo;	
 	}
 }
