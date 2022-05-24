@@ -1,5 +1,12 @@
 package model;
 
+import org.springframework.stereotype.Component;
+import org.springframework.web.context.annotation.RequestScope;
+import org.springframework.web.context.annotation.SessionScope;
+
+@Component
+@RequestScope
+@SessionScope
 public class MemberVO {
 	private String id;
 	private String pwd;

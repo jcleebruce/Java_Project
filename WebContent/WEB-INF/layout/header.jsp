@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,8 +27,19 @@ header {
 					aria-controls="offcanvasNavbar">
 					<span class="navbar-toggler-icon"></span>
 				</button>
-				<a class="navbar-brand" href="#">title</a>
-				<button type="button" class="btn btn-outline-primary">sign-up</button>
+				<a class="navbar-brand" href="mainForm">title</a>
+				<c:choose>
+					<c:when test="${user.id!=null }">
+					<div>
+					${user.nickName }님
+					<button type="button" class="btn btn-outline-primary" onclick="location.href='myPage'">마이페이지</button>
+					<button type="button" class="btn btn-outline-primary" onclick="location.href='logout'">로그아웃</button>
+					</div>
+					</c:when>
+					<c:otherwise>
+					<button type="button" class="btn btn-outline-primary" onclick="location.href='login'">로그인</a></button>
+					</c:otherwise>
+				</c:choose>
 				<div class="offcanvas offcanvas-start" tabindex="-1"
 					id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
 					<div class="offcanvas-header">
@@ -65,6 +77,16 @@ header {
 			</div>
 		</nav>
 	</header>
+	
+	<script>
+		function goPost() {
+			let post=document.createElement('form');
+			post.setAttribute('method','post');
+			post.setAttribute('action','myPage');
+			document.body.appendChild(post);
+			post.submit();
+		}
+	</script>
 	
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

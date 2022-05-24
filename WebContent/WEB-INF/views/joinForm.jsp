@@ -54,11 +54,11 @@ body {
 			<div class="input-form-backgroud row">
 				<div class="input-form col-md-12 mx-auto">
 					<h4 class="mb-3">회원가입</h4>
-					<form class="validation-form" name="frm" novalidate>
+					<form action="join.do" method="post" class="validation-form" name="frm" novalidate>
 						<div class="row">
 							<div class="col-md-9 mb-3">
 							<label for="id">아이디</label> <input type="text"
-								class="form-control" id="id" placeholder="" required>
+								class="form-control" name="id" id="id" placeholder="" required>
 							<div class="invalid-feedback">아이디를 입력해주세요.</div>
 							</div>
 							<div class="col-md-3 mb-3">
@@ -70,12 +70,12 @@ body {
 						<div class="row">
 							<div class="col-md-6 mb-3">
 								<label for="pwd">비밀번호</label> <input type="text"
-									class="form-control" id="pwd" placeholder="" value="" required>
+									class="form-control" name="pwd" id="pwd" placeholder="" value="" required>
 								<div class="invalid-feedback">비밀번호를 입력해주세요.</div>
 							</div>
 							<div class="col-md-6 mb-3">
 								<label for="pwdCheck">비밀번호 확인</label> <input type="text"
-									class="form-control" id="pwdCheck" placeholder="" value="" required>
+									class="form-control" name="pwdCheck" id="pwdCheck" placeholder="" value="" required>
 								<div class="invalid-feedback">비밀번호를 입력해주세요.</div>
 							</div>
 						</div>
@@ -83,12 +83,12 @@ body {
 						<div class="row">
 							<div class="col-md-6 mb-3">
 								<label for="name">이름</label> <input type="text"
-									class="form-control" id="userName" placeholder="" value="" required>
+									class="form-control" name="userName" id="userName" placeholder="" value="" required>
 								<div class="invalid-feedback">이름을 입력해주세요.</div>
 							</div>
 							<div class="col-md-6 mb-3">
 								<label for="email">이메일</label> <input type="email"
-									class="form-control" id="email" placeholder="you@example.com"
+									class="form-control" name="email" id="email" placeholder="you@example.com"
 									required>
 								<div class="invalid-feedback">이메일을 입력해주세요.</div>
 							</div>
@@ -97,7 +97,7 @@ body {
 						<div class="row">
 							<div class="col-md-9 mb-3">
 							<label for="nickName">별명</label> <input type="text"
-								class="form-control" id="nickName" placeholder="" value="" required>
+								class="form-control" name= "nickName" id="nickName" placeholder="" value="" required>
 							<div class="invalid-feedback">별명을 입력해주세요.</div>
 							</div>
 							<div class="col-md-3 mb-3">
@@ -108,7 +108,7 @@ body {
 						<div class="row">
 							<div class="col-md-9 mb-3">
 								<label for="address1">주소</label> <input type="text"
-									class="form-control" id="address1" placeholder="서울특별시 강남구"
+									class="form-control" name="address1" id="address1" placeholder="서울특별시 강남구"
 									required>
 								<div class="invalid-feedback">주소를 입력해주세요.</div>
 							</div>
@@ -119,18 +119,18 @@ body {
 						</div>
 						<div class="mb-3">
 							<label for="address2">상세주소<span class="text-muted">&nbsp;(필수
-									아님)</span></label> <input type="text" class="form-control" id="address2"
+									아님)</span></label> <input type="text" class="form-control" name="address2" id="address2"
 								placeholder="상세주소를 입력해주세요.">
 						</div>
 						<div class="row">
 							<div class="col-md-6 mb-3">
 								<label for="phone">전화번호</label> <input type="text"
-									class="form-control" id="phone" placeholder="" required>
+									class="form-control" name="phone" id="phone" placeholder="" required>
 								<div class="invalid-feedback">전화번호를 입력해주세요.</div>
 							</div>
 							<div class="col-md-6 mb-3">
 								<label for="joinRoute">가입 경로</label> <select
-									class="custom-select d-block w-100" id="joinRoute">
+									class="custom-select d-block w-100" name="joinRoute" id="joinRoute">
 									<option value=""></option>
 									<option>검색</option>
 									<option>카페</option>
@@ -142,7 +142,7 @@ body {
 						<div class="row">
 							<div class="mb-3">
 								<label for="chargingType">충전 타입</label> <select
-									class="custom-select d-block w-100" id="chargingType">
+									class="custom-select d-block w-100" name="chargingType" id="chargingType">
 									<option value=""></option>
 									<option>완속</option>
 									<option>차데모</option>

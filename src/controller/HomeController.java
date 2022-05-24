@@ -12,5 +12,11 @@ public class HomeController {
 		
 		return "mainForm";
 	}
+	
+	@RequestMapping(value="/mainForm",method= {RequestMethod.GET,RequestMethod.POST})
+	public String main() {
+		
+		return "forward:/";
+	}
 
 }

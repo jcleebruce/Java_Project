@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<script type="text/javascript" src="../script/member.js"></script>
+<script type="text/javascript" src="script/member.js"></script>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -16,7 +16,7 @@
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 
-<link rel="stylesheet" type="text/css" href="../css/joinForm.css">
+<link rel="stylesheet" type="text/css" href="css/joinForm.css">
 </head>
 <body>
 
@@ -27,36 +27,36 @@
 
 	<div class="container">
 		<div class="input-form col-md-12 mx-auto">
-			<form name="form" class="validation-form" novalidate>
+			<form name="form" class="validation-form" id="form" novalidate>
 				<div class="row">
 					<div class="col-md-6 mb-3">
 						<label for="id">아이디</label> <input type="text"
-							class="form-control" id="id" placeholder="" value="" required>
+							class="form-control" name="id" id="id" placeholder="" value="${userinfo.id }" required readonly>
 						<!-- 수정 불가 -->
 					</div>
 					<div class="col-md-6 mb-3">
 						<label for="pwd">비밀번호</label> <input type="text"
-							class="form-control" id="pwd" placeholder="" value="" required>
+							class="form-control" name="pwd" id="pwd" placeholder="" value="${userinfo.pwd }" required>
 						<!-- 수정 불가 -->
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-6 mb-3">
 						<label for="name">이름</label> <input type="text"
-							class="form-control" id="userName" placeholder="" value="" 
+							class="form-control" name="userName" id="userName" placeholder="" value="${userinfo.userName }" 
 							required>
 						<div class="invalid-feedback">이름을 입력해주세요.</div>
 					</div>
 					<div class="col-md-6 mb-3">
 						<label for="nickname">별명</label> <input type="text"
-							class="form-control" id="nickName" placeholder="" value=""
+							class="form-control" name="nickName" id="nickName" placeholder="" value="${userinfo.nickName }"
 							required>
 						<div class="invalid-feedback">별명을 입력해주세요.</div>
 					</div>
 				</div>
 				<div class="mb-3">
 					<label for="email">이메일</label> <input type="email"
-						class="form-control" id="email" placeholder="you@example.com"
+						class="form-control" name="email" id="email" placeholder="" value="${userinfo.email }"
 						required>
 					<div class="invalid-feedback">이메일을 입력해주세요.</div>
 				</div>
@@ -64,7 +64,7 @@
 				<div class="row">
 					<div class="col-md-9 mb-3">
 						<label for="address">주소</label> <input type="text"
-							class="form-control" id="address" placeholder="서울특별시 강남구"
+							class="form-control" name="address1" id="address1" placeholder="서울특별시 강남구" value="${userinfo.address1 }"
 							required>
 						<div class="invalid-feedback">주소를 입력해주세요.</div>
 					</div>
@@ -76,20 +76,20 @@
 
 				<div class="mb-3">
 					<label for="address2">상세주소<span class="text-muted">&nbsp;
-							(필수아님)</span></label> <input type="text" class="form-control" id="address2"
-						placeholder="상세주소를 입력해주세요.">
+							(필수아님)</span></label> <input type="text" class="form-control" name="address2" id="address2"
+						placeholder="상세주소를 입력해주세요." value="${userinfo.address2 }">
 				</div>
 				
 				<div class="row">
 					<div class="col-md-6 mb-3">
 								<label for="phone">전화번호</label> <input type="text"
-									class="form-control" id="phone" placeholder="" required>
+									class="form-control" name="phone" id="phone" placeholder="" value="${userinfo.phone }" required>
 								<div class="invalid-feedback">전화번호를 입력해주세요.</div>
 					</div>
 					<div class="col-md-6 mb-3">
 						<label for="root">가입 경로</label> <select
-							class="form-select d-block w-100" id="root">
-							<option value=""></option>
+							class="form-select d-block w-100" name="joinRoute" id="joinRoute">
+							<option value="${userinfo.joinRoute }" hidden="">${userinfo.joinRoute }</option>
 							<option>검색</option>
 							<option>카페</option>
 							<option>지인 권유</option>
@@ -101,8 +101,8 @@
 				<div class="row">
 					<div class="mb-3">
 						<label for="chargingType">충전 타입</label> <select
-							class="form-select d-block w-100" id="chargingType">
-							<option value=""></option>
+							class="form-select d-block w-100" name="chargingType" id="chargingType">
+							<option value="${userinfo.chargingType }" hidden="">${userinfo.chargingType }</option>
 							<option>완속</option>
 							<option>차데모</option>
 							<option>콤보</option>
@@ -114,12 +114,12 @@
 
 				<div class="row mt-3">
 					<div class="col-lg-6 col-sm-6 text-lg-middle text-center">
-						<button class="btn btn-primary btn-lg btn-block btn-my"
-							onclick="onModify()">수정</button>
+						<button type="submit" formaction="modify.do" formmethod="post" class="btn btn-primary btn-lg btn-block btn-my"
+							onclick="">수정</button>
 					</div>
 					<div class="col-lg-6 col-sm-6 text-lg-middle text-center">
-						<button class="btn btn-primary btn-lg btn-block btn-my"
-							onclick="onDelete()">탈퇴</button>
+						<button type="submit" formaction="delete.do" formmethod="post" class="btn btn-primary btn-lg btn-block btn-my"
+							onclick="">탈퇴</button>
 					</div>
 				</div>
 			</form>

@@ -14,7 +14,7 @@
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 
-<link rel="stylesheet" type="text/css" href="../css/myPage_review.css">
+<link rel="stylesheet" type="text/css" href="css/myPage_review.css">
 </head>
 <body>
 
