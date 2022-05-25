@@ -8,7 +8,14 @@ public class CommunityVO {
 	private int readcount; //글 조회수
 	private String content; //글 내용
 	private String reply; //댓글
+	private int replynum; //댓글 번호
 	
+	public int getReplynum() {
+		return replynum;
+	}
+	public void setReplynum(int replynum) {
+		this.replynum = replynum;
+	}
 	public int getNum() {
 		return num;
 	}
