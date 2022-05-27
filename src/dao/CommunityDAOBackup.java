@@ -9,10 +9,12 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import org.springframework.stereotype.Component;
+
 import model.CommunityVO;
 
 
-
+@Component
 public class CommunityDAOBackup {
 	ResultSet rs;
 	Connection conn;
