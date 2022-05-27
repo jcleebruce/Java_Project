@@ -50,7 +50,7 @@
 
 				<div class="col-md-8">
 					<!-- 제목창 공간 -->
-					<input type="text" class="form-control" placeholder="제목">
+					<input type="text" class="form-control" name="title" placeholder="제목">
 				</div>
 			</div>
 			<div class="row">

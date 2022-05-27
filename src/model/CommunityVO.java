@@ -1,5 +1,8 @@
 package model;
 
+import org.springframework.stereotype.Component;
+
+@Component //Bean으로 스겠다
 public class CommunityVO {
 	private int	num; //글 번호
 	private String writer; //글 작성자

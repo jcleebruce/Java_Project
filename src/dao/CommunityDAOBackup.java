@@ -78,6 +78,7 @@ public class CommunityDAOBackup {
 				CVO.setReadcount(rs.getInt(5));
 				CVO.setContent(rs.getString(6));
 				CVO.setReply(rs.getString(7));
+				CVO.setReplynum(rs.getInt(8));
 				
 				vec.add(CVO);				
 			}
@@ -115,6 +116,7 @@ public class CommunityDAOBackup {
 					CVO.setReadcount(rs.getInt(5));
 					CVO.setContent(rs.getString(6));
 					CVO.setReply(rs.getString(7));
+					CVO.setReplynum(rs.getInt(8));
 				}
 			}catch(Exception e) {
 				e.printStackTrace();
@@ -140,6 +142,7 @@ public class CommunityDAOBackup {
 					CVO.setReadcount(rs.getInt(5));
 					CVO.setContent(rs.getString(6));
 					CVO.setReply(rs.getString(7));
+					CVO.setReplynum(rs.getInt(8));
 				}
 				pstmt.close();
 				conn.close();
@@ -153,9 +156,9 @@ public class CommunityDAOBackup {
 			try {
 				String sql="update board set subject=?, content=? where num=?";
 				pstmt=conn.prepareStatement(sql);
-				pstmt.setString(1, CVO.getSubject());
-				pstmt.setString(2, CVO.getContent());
-				pstmt.setInt(3, CVO.getNum());
+				pstmt.setInt(1, CVO.getNum());
+				pstmt.setString(2, CVO.getSubject());
+				pstmt.setString(3, CVO.getContent());
 				pstmt.executeUpdate();
 				
 				
@@ -186,7 +189,7 @@ public class CommunityDAOBackup {
 			}
 			return count;
 		}
-		//검색을 하기 위한 매서드
+		//제목으로 검색을 하기 위한 매서드
 		public CommunityVO selectProductBysubject(String subject) {
 			CommunityVO CVO=null;
 			getCon();
