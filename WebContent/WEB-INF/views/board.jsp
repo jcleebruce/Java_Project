@@ -56,20 +56,20 @@
 				<div class="position-sticky pt-3">
 					<ul class="nav flex-column tab">
 						<li data-tab="car_summary" class="nav-item tabmenu" id="default">
-						<a class="nav-link active"aria-current="page" href="#"><i class="bi bi-card-text fs-5"></i>
+						<a class="nav-link active" aria-current="page" href="car_summary"><i class="bi bi-card-text fs-5"></i>
 								전기차 소개 </a></li>
 						<li data-tab="search_station" class="nav-item tabmenu">
-						<a class="nav-link" aria-current="page"	href="#"><i class="bi bi-card-text fs-5"></i> 
+						<a class="nav-link" aria-current="page"	href="search_station"><i class="bi bi-card-text fs-5"></i> 
 								전국 충전소 검색하기 </a></li>
 						
-						<li data-tab="community_notice" class="nav-item tabmenu"">
-						<a class="nav-link" aria-current="page"	href="#"><i class="bi bi-person fs-5"></i> 
+						<li data-tab="community_notice" class="nav-item tabmenu">
+						<a class="nav-link" aria-current="page"	href="community_notice"><i class="bi bi-person fs-5"></i> 
 								공지사항 </a></li>
-						<li data-tab="community_review" class="nav-item tabmenu"">
-						<a class="nav-link" aria-current="page"	href="#"><i class="bi bi-chat-text fs-5"></i> 
+						<li data-tab="community_review" class="nav-item tabmenu">
+						<a class="nav-link" aria-current="page"	href="community_review"><i class="bi bi-chat-text fs-5"></i> 
 								이용후기 </a></li>
-						<li data-tab="community_talkboard" class="nav-item tabmenu"">
-						<a class="nav-link" aria-current="page"	href="#"><i class="bi bi-card-text fs-5"></i> 
+						<li data-tab="community_talkboard" class="nav-item tabmenu">
+						<a class="nav-link" aria-current="page"	href="community_talkboard"><i class="bi bi-card-text fs-5"></i> 
 								자유게시판 </a></li>		
 					</ul>
 				</div>

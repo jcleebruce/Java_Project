@@ -15,7 +15,7 @@ import model.CommunityVO;
 
 
 @Component
-public class CommunityDAOBackup {
+public class CommunityDAO {
 	ResultSet rs;
 	Connection conn;
 	PreparedStatement pstmt;
