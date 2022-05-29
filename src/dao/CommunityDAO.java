@@ -59,8 +59,8 @@ public class CommunityDAO {
 			e.printStackTrace();
 			}
 		}
-		
-		public void insertreply(CommunityVO CVO) {
+		//댓글이 입력되는 매서드
+		public int insertreply(CommunityVO replynum) {
 			getCon();
 			try {
 			String sql="insert into community where num=?";
@@ -69,6 +69,7 @@ public class CommunityDAO {
 			
 			pstmt.close();
 			conn.close();
+			
 			
 			}catch(Exception e) {
 			e.printStackTrace();
