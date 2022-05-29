@@ -73,6 +73,18 @@ public class BoardController {
 		return "community_talkboard";//글을 다 쓰고 자유게시판으로 이동
 	}
 	
+	@GetMapping("/replyinput")
+	public String replyinput(HttpServletRequest request) {
+		//들어오고 가기전에 이 과정을 이행함
+		request.getAttribute("reply");//textArea에 있었던 데이터를 가져온다.
+		//request/response써야하나?
+		
+		
+		CDAO.insertreply(CVO);
+		
+		return "community_talkboard";//글을 다 쓰고 자유게시판으로 이동
+	}
+	
 	@GetMapping("/search") //talkboard에 있는 <form action="search">를 가져옴
 	public String search(HttpServletRequest request) {
 		request.getAttribute("searchtext"); 
@@ -84,7 +96,7 @@ public class BoardController {
 		CVO.setContent((String)request.getAttribute("bdContent"));
 		
 		return "community_talkboard";
-	}//테스트 안해봄
+	}//테스트 안해봄, 일일이 리턴값을 게시판 이름 적어주는건 비효율적일거 같음.
 	
 	//글 하나 조회
 	
@@ -93,5 +105,6 @@ public class BoardController {
 	//글 하나 삭제
 	
 	//글 전체 받아서 게시판에 집어넣기
-	//일단 이것부터 처리해야 조회 수정 삭제가 가능할거 같은데 어떻게 배열 집어 넣어야 할지 고민중. 일단 자고 일어나서 하겠습니다
+	
+	//일단 이것부터 처리해야 조회 수정 삭제가 가능할거 같은데 어떻게 배열 집어 넣어야 할지 모르겠음...
 }

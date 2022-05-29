@@ -60,6 +60,20 @@ public class CommunityDAO {
 			}
 		}
 		
+		public void insertreply(CommunityVO CVO) {
+			getCon();
+			try {
+			String sql="insert into community where num=?";
+			pstmt=conn.prepareStatement(sql);
+			//뭔가 이렇게 해서 num으로 받아온 글 번호에 차근차근 하나씩 댓글 집어 넣는 식으로...?
+			
+			pstmt.close();
+			conn.close();
+			
+			}catch(Exception e) {
+			e.printStackTrace();
+			}
+		}
 	public Vector<CommunityVO> getAllBoard(int start, int end){
 		Vector<CommunityVO> vec=new Vector<>();
 		getCon();
