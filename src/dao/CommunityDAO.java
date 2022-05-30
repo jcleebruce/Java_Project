@@ -67,9 +67,9 @@ public class CommunityDAO {
 			pstmt=conn.prepareStatement(sql);
 			//reply 테이블 : num(들어갈 글의 번호)/reply(댓글 내용)/replynum(댓글 번호) num으로 테이블 본문 내용이랑 같이 조회해서 꺼내기
 			//다른 컨트롤러에 만들어야 하나
-			pstmt.setString(1, CVO.getNum());			
-			pstmt.setString(2, CVO.getReply());			
-			pstmt.setString(3, CVO.getReplynum());
+			//pstmt.setString(1, CVO.getNum());			
+			//pstmt.setString(2, CVO.getReply());			
+			//pstmt.setString(3, CVO.getReplynum());
 			pstmt.executeQuery();
 			pstmt.close();
 			conn.close();
