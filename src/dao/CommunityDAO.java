@@ -60,13 +60,17 @@ public class CommunityDAO {
 			}
 		}
 		//댓글이 입력되는 매서드
-		public int insertreply(CommunityVO replynum) {
+		public void insertreply(CommunityVO CVO) {
 			getCon();
-			try {
-			String sql="insert into community where num=?";
+			try {//reply테이블 하나 더 만들어야 할듯
+			String sql="insert into reply values(reply_seq.nextval, ?, ?, ?)";
 			pstmt=conn.prepareStatement(sql);
-			//뭔가 이렇게 해서 num으로 받아온 글 번호에 차근차근 하나씩 댓글 집어 넣는 식으로...?
-			
+			//reply 테이블 : num(들어갈 글의 번호)/reply(댓글 내용)/replynum(댓글 번호) num으로 테이블 본문 내용이랑 같이 조회해서 꺼내기
+			//다른 컨트롤러에 만들어야 하나
+			pstmt.setString(1, CVO.getNum());			
+			pstmt.setString(2, CVO.getReply());			
+			pstmt.setString(3, CVO.getReplynum());
+			pstmt.executeQuery();
 			pstmt.close();
 			conn.close();
 			
@@ -94,8 +98,8 @@ public class CommunityDAO {
 				CVO.setReg_date(rs.getDate(4).toString());
 				CVO.setReadcount(rs.getInt(5));
 				CVO.setContent(rs.getString(6));
-				CVO.setReply(rs.getString(7));
-				CVO.setReplynum(rs.getInt(8));
+				//CVO.setReply(rs.getString(7));
+				//CVO.setReplynum(rs.getInt(8));
 				
 				vec.add(CVO);				
 			}
@@ -112,7 +116,8 @@ public class CommunityDAO {
 			CommunityVO CVO = new CommunityVO();
 			getCon();
 			
-			try {
+			try {//community 테이블
+				//num(글 번호) writer(글 작성자), subject(글 제목), reg_date(글 작성일), readcount(글 조회수), content(글 내용)
 				//조횟수 증가 쿼리
 				String readsql="update board set readcount=readcount+1 where num=?";
 				pstmt=conn.prepareStatement(readsql);
@@ -132,8 +137,8 @@ public class CommunityDAO {
 					CVO.setReg_date(rs.getDate(4).toString());
 					CVO.setReadcount(rs.getInt(5));
 					CVO.setContent(rs.getString(6));
-					CVO.setReply(rs.getString(7));
-					CVO.setReplynum(rs.getInt(8));
+					//CVO.setReply(rs.getString(7));
+					//CVO.setReplynum(rs.getInt(8));
 				}
 			}catch(Exception e) {
 				e.printStackTrace();
@@ -158,8 +163,8 @@ public class CommunityDAO {
 					CVO.setReg_date(rs.getDate(4).toString());
 					CVO.setReadcount(rs.getInt(5));
 					CVO.setContent(rs.getString(6));
-					CVO.setReply(rs.getString(7));
-					CVO.setReplynum(rs.getInt(8));
+					//CVO.setReply(rs.getString(7));
+					//CVO.setReplynum(rs.getInt(8));
 				}
 				pstmt.close();
 				conn.close();
