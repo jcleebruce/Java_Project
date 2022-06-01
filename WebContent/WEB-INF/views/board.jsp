@@ -26,7 +26,7 @@
 			
 			$.ajax({
 				type : 'GET', //get방식으로 통신
-				url : activeTab + ".jsp", //탭의 data-tab속성의 값으로 된 html파일로 통신
+				url : activeTab, //탭의 data-tab속성의 값으로 된 html파일로 통신
 				dataType : "html", //html형식으로 값 읽기
 				error : function() { //통신 실패시
 					alert('통신실패!');
@@ -60,7 +60,8 @@
 								전기차 소개 </a></li>
 						<li data-tab="search_station" class="nav-item tabmenu">
 						<a class="nav-link" aria-current="page"	href="#"><i class="bi bi-card-text fs-5"></i> 
-								전국 충전소 검색하기 </a></li>						
+								전국 충전소 검색하기 </a></li>
+						
 						<li data-tab="community_notice" class="nav-item tabmenu">
 						<a class="nav-link" aria-current="page"	href="#"><i class="bi bi-person fs-5"></i> 
 								공지사항 </a></li>

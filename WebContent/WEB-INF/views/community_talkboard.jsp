@@ -180,18 +180,16 @@
 	</div>
 	
 	<div class="row">
-					<div class="col-md-3">
-					<form action="search">
+					<div class="col-md-3">					
 						<div class="input-group">
-							<input type="text" class="form-control" placeholder="게시판검색" name="searchtext">
-							<button class="btn btn-outline-primary" type="button">
+							<input type="text" class="form-control" placeholder="게시판검색" name="search">
+							<button class="btn btn-outline-primary" type="submit">
 								검색</button>
-						</div>
-					</form>
+						</div>					
 					</div>
 					<div class="col-md-8"></div>
 					<div class="col-md-1">
-						<a class="btn btn-primary float-right">글쓰기</a>
+							<button class="btn btn-primary float-right" type="button" onclick="location.href='talkwrite'">글쓰기</button> 
 					</div>
 					<div>
 						<nav aria-label="pagenav">

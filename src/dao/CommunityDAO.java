@@ -63,13 +63,15 @@ public class CommunityDAO {
 		public void insertreply(CommunityVO CVO) {
 			getCon();
 			try {//reply테이블 하나 더 만들어야 할듯
-			String sql="insert into reply values(reply_seq.nextval, ?, ?, ?)";
+			String sql="insert into reply values(reply_seq.nextval, ?, ?)";
 			pstmt=conn.prepareStatement(sql);
-			//reply 테이블 : num(들어갈 글의 번호)/reply(댓글 내용)/replynum(댓글 번호) num으로 테이블 본문 내용이랑 같이 조회해서 꺼내기
+			//reply 테이블 : num(들어갈 글의 번호)/reply(댓글 내용)/replynum(댓글 번호)
+			//community에 있는 num과 reply에 있는 num을 group by로 병합하기?
 			//다른 컨트롤러에 만들어야 하나
-			//pstmt.setString(1, CVO.getNum());			
-			//pstmt.setString(2, CVO.getReply());			
-			//pstmt.setString(3, CVO.getReplynum());
+						
+			pstmt.setString(1, CVO.getReply());			
+			pstmt.setInt(2, CVO.getReplynum());
+			
 			pstmt.executeQuery();
 			pstmt.close();
 			conn.close();
@@ -116,7 +118,8 @@ public class CommunityDAO {
 			CommunityVO CVO = new CommunityVO();
 			getCon();
 			
-			try {//community 테이블
+			try {
+				//community 테이블
 				//num(글 번호) writer(글 작성자), subject(글 제목), reg_date(글 작성일), readcount(글 조회수), content(글 내용)
 				//조횟수 증가 쿼리
 				String readsql="update board set readcount=readcount+1 where num=?";

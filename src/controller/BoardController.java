@@ -19,7 +19,7 @@ public class BoardController {
 	@Autowired
 	CommunityDAO CDAO;
 	
-	@GetMapping("/board") //header의 href="board"가 여기서 잡힌다
+	@GetMapping("/board") //
 	public String board() {
 		//데이터가 들어와서 여기서 처리하고서 리턴을 가야하는 경우 여기다 쓴다
 		return "board";//views에 있는 jsp파일의 이름을 큰따옴표 안에 쓴다.
@@ -56,36 +56,36 @@ public class BoardController {
 		
 		
 		return "community_talkboard";
-	}//board랑 같이 안나옴... 내부에 뭔가 처리를 하고 진행해야 할지도?
-	
-	
-	@GetMapping("/write")
-	public String write(HttpServletRequest request) {
-		//들어오고 가기전에 이 과정을 이행함
-		request.getAttribute("bdContent");//textArea에 있었던 데이터를 가져온다.
-		CVO.setNum((int)request.getAttribute("num"));
-		CVO.setSubject((String)request.getAttribute("title"));
-		CVO.setContent((String)request.getAttribute("bdContent"));
-		
-		
-		CDAO.insertBoard(CVO);
-		
-		return "community_talkboard";//글을 다 쓰고 자유게시판으로 이동
 	}
+	
+	
+	/*
+	 * @GetMapping("/writetalk") public String write(HttpServletRequest request) {
+	 * //들어오고 가기전에 이 과정을 이행함 request.getAttribute("bdContent");//textArea에 있었던 데이터를
+	 * 가져온다. CVO.setNum((int)request.getAttribute("num"));
+	 * CVO.setSubject((String)request.getAttribute("title"));
+	 * CVO.setContent((String)request.getAttribute("bdContent"));
+	 * 
+	 * 
+	 * CDAO.insertBoard(CVO);
+	 * 
+	 * return "community_talkboard";//글을 다 쓰고 자유게시판으로 이동 }
+	 */
 	
 	@GetMapping("/replyinput")
 	public String replyinput(HttpServletRequest request) {
 		//들어오고 가기전에 이 과정을 이행함
 		request.getAttribute("reply");//textArea에 있었던 데이터를 가져온다.
 		//request/response써야하나?
-		
+		//CVO.getReply((String)request.getAttribute("reply"));
+		//CVO.getReplynum(request.getAttribute(name));
 		
 		CDAO.insertreply(CVO);
 		
 		return "community_talkboard";//글을 다 쓰고 자유게시판으로 이동
 	}
 	
-	@GetMapping("/search") //talkboard에 있는 <form action="search">를 가져옴
+	@GetMapping("/searchtext") //
 	public String search(HttpServletRequest request) {
 		request.getAttribute("searchtext"); 
 		CVO.setNum((int)request.getAttribute("num"));

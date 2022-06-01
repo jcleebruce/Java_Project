@@ -55,7 +55,7 @@
 			<div class="row">
 
 				<div class="col-md-8">
-				<form action="replyinput">
+				<form action="replyinput" method="get">
 						<div class="input-group">
 							<input type="text" class="form-control" placeholder="댓글" name="reply">
 							<button class="btn btn-outline-primary" type="button">작성</button><!-- 댓글 입력 해서 보내기 -->							
