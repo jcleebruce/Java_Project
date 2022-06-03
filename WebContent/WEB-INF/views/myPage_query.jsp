@@ -14,148 +14,95 @@
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 
+<link rel="stylesheet" type="text/css" href="css/myPage_review.css">
+
+<jsp:include page="../layout/header.jsp"></jsp:include>
+<jsp:include page="../layout/footer.jsp"></jsp:include>
 </head>
+
+
 <body>
 
-	<div class="chartjs-size-monitor">
-		<div class="chartjs-size-monitor-expand">
-			<div class=""></div>
-		</div>
-		<div class="chartjs-size-monitor-shrink">
-			<div class=""></div>
-		</div>
-	</div>
-	<div
-		class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-		<h1 class="h3">문의 내역</h1>
-	</div>
+	<div class="container-fluid">
+		<div class="row">
+			<nav id="sidebarMenu"
+				class="col-md-3 col-lg-2 d-md-block sidebar collapse">
+				<h4
+					class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+					<span>MY PAGES</span>
+				</h4>
+				<div class="position-sticky pt-3">
+					<ul class="nav flex-column tab">
+						<li data-tab="myPage_querylist" class="nav-item tabmenu"
+							id="default"><a class="nav-link" aria-current="page"
+							href="myPage_querylist"><i class="bi bi-chat-text fs-5"></i>
+								문의 내역 </a></li>
+						<li data-tab="myPage_query" class="nav-item tabmenu"><a
+							class="nav-link" aria-current="page" href="myPage_query"><i
+								class="bi bi-chat-text fs-5"></i> 문의 하기 </a></li>
+						<li data-tab="myPage_review" class="nav-item tabmenu"><a
+							class="nav-link" aria-current="page" href="myPage_review"><i
+								class="bi bi-card-text fs-5"></i> 내가 작성한 리뷰 </a></li>
+						<li data-tab="myPage_info" class="nav-item tabmenu""><a
+							class="nav-link" aria-current="page" href="myPage_info"><i
+								class="bi bi-person fs-5"></i> 내 정보 수정 </a></li>
+					</ul>
+				</div>
+			</nav>
 
-	<div class="table-responsive">
-		<table class="table table-hover table-sm">
-			<thead>
-				<tr>
-					<th scope="col">#</th>
-					<th scope="col">Header</th>
-					<th scope="col">Header</th>
-					<th scope="col">Header</th>
-					<th scope="col">Header</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>1,001</td>
-					<td>random</td>
-					<td>data</td>
-					<td>placeholder</td>
-					<td>text</td>
-				</tr>
-				<tr>
-					<td>1,002</td>
-					<td>placeholder</td>
-					<td>irrelevant</td>
-					<td>visual</td>
-					<td>layout</td>
-				</tr>
-				<tr>
-					<td>1,003</td>
-					<td>data</td>
-					<td>rich</td>
-					<td>dashboard</td>
-					<td>tabular</td>
-				</tr>
-				<tr>
-					<td>1,003</td>
-					<td>information</td>
-					<td>placeholder</td>
-					<td>illustrative</td>
-					<td>data</td>
-				</tr>
-				<tr>
-					<td>1,004</td>
-					<td>text</td>
-					<td>random</td>
-					<td>layout</td>
-					<td>dashboard</td>
-				</tr>
-				<tr>
-					<td>1,005</td>
-					<td>dashboard</td>
-					<td>irrelevant</td>
-					<td>text</td>
-					<td>placeholder</td>
-				</tr>
-				<tr>
-					<td>1,006</td>
-					<td>dashboard</td>
-					<td>illustrative</td>
-					<td>rich</td>
-					<td>data</td>
-				</tr>
-				<tr>
-					<td>1,007</td>
-					<td>placeholder</td>
-					<td>tabular</td>
-					<td>information</td>
-					<td>irrelevant</td>
-				</tr>
-				<tr>
-					<td>1,008</td>
-					<td>random</td>
-					<td>data</td>
-					<td>placeholder</td>
-					<td>text</td>
-				</tr>
-				<tr>
-					<td>1,009</td>
-					<td>placeholder</td>
-					<td>irrelevant</td>
-					<td>visual</td>
-					<td>layout</td>
-				</tr>
-				<tr>
-					<td>1,010</td>
-					<td>data</td>
-					<td>rich</td>
-					<td>dashboard</td>
-					<td>tabular</td>
-				</tr>
-				<tr>
-					<td>1,011</td>
-					<td>information</td>
-					<td>placeholder</td>
-					<td>illustrative</td>
-					<td>data</td>
-				</tr>
-				<tr>
-					<td>1,012</td>
-					<td>text</td>
-					<td>placeholder</td>
-					<td>layout</td>
-					<td>dashboard</td>
-				</tr>
-				<tr>
-					<td>1,013</td>
-					<td>dashboard</td>
-					<td>irrelevant</td>
-					<td>text</td>
-					<td>visual</td>
-				</tr>
-				<tr>
-					<td>1,014</td>
-					<td>dashboard</td>
-					<td>illustrative</td>
-					<td>rich</td>
-					<td>data</td>
-				</tr>
-				<tr>
-					<td>1,015</td>
-					<td>random</td>
-					<td>tabular</td>
-					<td>information</td>
-					<td>text</td>
-				</tr>
-			</tbody>
-		</table>
+			<main id="tabcontent" class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+				<form action="" method="post">
+					<div class="chartjs-size-monitor">
+						<div class="chartjs-size-monitor-expand">
+							<div class=""></div>
+						</div>
+						<div class="chartjs-size-monitor-shrink">
+							<div class=""></div>
+						</div>
+					</div>
+					<div
+						class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+						<h1 class="h3">문의 하기</h1>
+					</div>
+
+					<div class="col-lg-9 ml-auto bg-white sticky-top py-2">
+						<div class="row">
+							<!-- <div class="col-md-3">
+					태그 공간
+					<select class="form-select">
+						<option selected>태그</option>
+						<option value="1">오류</option>
+						<option value="2">자유게시판</option>
+					</select>
+				</div> -->
+
+							<div class="col-md-12">
+								<!-- 제목창 공간 -->
+								<input type="text" class="form-control" placeholder="제목"
+									name="title">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<br>
+								<div class="form-group">
+									<textarea class="form-control" rows="20" name="content"
+										placeholder="내용을 입력해주세요"></textarea>
+								</div>
+							</div>
+						</div>
+						<div class="row mt-3">
+							<div class="text-end">
+								<button type="submit" formaction="query_insert.do" formmethod="post"
+									class="btn btn-primary btn btn-block btn-my" onclick="">확인</button>
+								<button type="button" class="btn btn-primary btn btn-block btn-my" 
+									onclick="location.href='myPage_querylist'">취소</button>
+							</div>
+						</div>
+					</div>
+				</form>
+			</main>
+		</div>
 	</div>
 
 	<script

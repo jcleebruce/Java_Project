@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -9,9 +11,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.servlet.ModelAndView;
 
 import dao.MemberDAO;
+import dao.QueryDAO;
+import model.Criteria;
 import model.MemberVO;
+import model.PageMaker;
+import model.QueryVO;
 import util.ScriptUtils;
 
 @Controller
@@ -21,11 +28,17 @@ public class myPageController {
 
 	@Autowired
 	MemberVO mvo;
+	
+	@Autowired
+	QueryDAO qdao;
+	
+	@Autowired
+	QueryVO qvo;
 
 	@GetMapping("/myPage")
 	public String myPage() {
 
-		return "myPageForm";
+		return "forward:/myPage_querylist";
 	}
 
 	@GetMapping("/myPage_info")
@@ -36,17 +49,46 @@ public class myPageController {
 
 		return "myPage_info";
 	}
-
+	
 	@GetMapping("/myPage_query")
 	public String myPage_query() {
-
+		
 		return "myPage_query";
+	}
+
+	@GetMapping("/myPage_querylist")
+	public ModelAndView myPage_querylist(Criteria cri, @SessionAttribute("user") MemberVO user) {
+		
+		ModelAndView mav=new ModelAndView("myPage_querylist");
+		
+		mvo=mdao.readId(user.getId());
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(qdao.countMyBoard(mvo.getNickName()));
+		
+		ArrayList<QueryVO> list= qdao.myAllQuery(cri, mvo.getNickName());
+		mav.addObject("list", list);
+		mav.addObject("pageMaker",pageMaker);
+		
+		/*
+		 * System.out.println(cri.getPageStart());
+		 * System.out.println(cri.getPerPageNum());
+		 */
+
+		return mav;
 	}
 
 	@GetMapping("/myPage_review")
 	public String myPage_review() {
 
 		return "myPage_review";
+	}
+	
+	@GetMapping("/talkboard_write")
+	public String talkboard() {
+		
+		return "talkboard_write";
 	}
 
 	@PostMapping("/modify.do")
@@ -118,6 +160,16 @@ public class myPageController {
 			}
 		}
 
+	}
+	
+	@PostMapping("/query_insert.do")
+	public String query_insert(@SessionAttribute("user") MemberVO user, QueryVO qvo) {
+		
+		qvo.setWriter(user.getNickName());
+		
+		qdao.insertBoard(qvo);
+		
+		return "redirect:/myPage_querylist";
 	}
 
 }

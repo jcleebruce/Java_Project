@@ -32,7 +32,17 @@
 		<javax.servlet.jsp-version>2.3.3</javax.servlet.jsp-version>
 		<javax.servlet.jsp.jstl-version>1.2</javax.servlet.jsp.jstl-version>
 		<org.springframework-version>5.2.2.RELEASE</org.springframework-version>
+		
 	</properties>
+	
+	<repositories>
+		<repository>
+			<id>oracle</id>
+			<name>ORACLE JDBC Repository</name>
+			<!-- <url>http://code.lds.org/nexus/content/groups/main-repo</url> -->
+			<url>http://maven.jahia.org/maven2</url>
+		</repository>
+	</repositories>
 
 	<!-- 라이브러리 셋팅 -->
 	<dependencies>
@@ -119,5 +129,6 @@
 		    <artifactId>jackson-databind</artifactId>
 		    <version>2.9.3</version>
 		</dependency>
+		
 	</dependencies>
 </project>
