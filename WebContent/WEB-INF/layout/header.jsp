@@ -32,7 +32,16 @@ header {
 					<c:when test="${user.id!=null }">
 					<div>
 					${user.nickName }님
-					<button type="button" class="btn btn-outline-primary" onclick="location.href='myPage'">마이페이지</button>
+					
+					<c:choose>
+						<c:when test="${user.admin> 0}">					
+							<button type="button" class="btn btn-outline-primary" onclick="location.href='adminPage'">관리자페이지</button>
+						</c:when>
+						<c:otherwise>
+							<button type="button" class="btn btn-outline-primary" onclick="location.href='myPage'">마이페이지</button>	
+						</c:otherwise>
+					</c:choose>
+					
 					<button type="button" class="btn btn-outline-primary" onclick="location.href='logout'">로그아웃</button>
 					</div>
 					</c:when>

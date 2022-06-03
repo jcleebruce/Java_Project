@@ -5,8 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
-<script type="text/javascript" src="script/member.js"></script>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -17,10 +15,35 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 
 <link rel="stylesheet" type="text/css" href="css/joinForm.css">
-<link rel="stylesheet" type="text/css" href="css/myPage_review.css">
+<link rel="stylesheet" type="text/css" href="../css/myPage_review.css">
+
+<!-- <script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+	$(function() {
+		// tab operation
+		$('.tabmenu').click(function() {
+			var activeTab = $(this).attr('data-tab');
+
+			$.ajax({
+				type : 'GET', //get방식으로 통신
+				url : activeTab, //탭의 data-tab속성의 값으로 된 html파일로 통신
+				dataType : "html", //html형식으로 값 읽기
+				error : function() { //통신 실패시
+					alert('통신실패!');
+				},
+				success : function(data) { //통신 성공시 탭 내용담는 div를 읽어들인 값으로 채운다.
+					$('#tabcontent').html(data);
+				}
+			});
+		});
+		$('#default').click();
+	});
+</script> -->
 
 <jsp:include page="../layout/header.jsp"></jsp:include>
 <jsp:include page="../layout/footer.jsp"></jsp:include>
+
 </head>
 <body>
 
@@ -30,31 +53,23 @@
 				class="col-md-3 col-lg-2 d-md-block sidebar collapse">
 				<h4
 					class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-					<span>MY PAGES</span>
+					<span>관리자 페이지</span>
 				</h4>
 				<div class="position-sticky pt-3">
 					<ul class="nav flex-column tab">
-						<li data-tab="myPage_querylist" class="nav-item tabmenu"
-							id="default"><a class="nav-link" aria-current="page"
-							href="myPage_querylist"><i class="bi bi-chat-text fs-5"></i>
-								문의 내역 </a></li>
+						<li data-tab="adminPage_members" class="nav-item tabmenu"><a
+							class="nav-link active" aria-current="page" href="#"><i
+								class="bi bi-card-text fs-5"></i> 회원 리스트</a></li>
 						<li data-tab="myPage_query" class="nav-item tabmenu"><a
-							class="nav-link" aria-current="page" href="myPage_query"><i
-								class="bi bi-chat-text fs-5"></i> 문의 하기 </a></li>
-						<li data-tab="myPage_review" class="nav-item tabmenu"><a
-							class="nav-link" aria-current="page" href="myPage_review"><i
-								class="bi bi-card-text fs-5"></i> 내가 작성한 리뷰 </a></li>
-						<li data-tab="myPage_info" class="nav-item tabmenu""><a
-							class="nav-link" aria-current="page" href="myPage_info"><i
-								class="bi bi-person fs-5"></i> 내 정보 수정 </a></li>
+							class="nav-link" aria-current="page" href="#"><i
+								class="bi bi-chat-text fs-5"></i> 회원 문의 내역 </a></li>
 					</ul>
 				</div>
 			</nav>
-
 			<main id="tabcontent" class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 				<div
 					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-					<h1 class="h3">내 정보 수정</h1>
+					<h1 class="h3">회원 정보 수정</h1>
 				</div>
 
 				<div class="container">
@@ -84,7 +99,7 @@
 								<div class="col-md-6 mb-3">
 									<label for="nickname">별명</label> <input type="text"
 										class="form-control" name="nickName" id="nickName"
-										placeholder="" value="${userinfo.nickName }" required readonly>
+										placeholder="" value="${userinfo.nickName }" required>
 									<div class="invalid-feedback">별명을 입력해주세요.</div>
 								</div>
 							</div>
@@ -98,7 +113,7 @@
 							<div class="row">
 								<div class="col-md-9 mb-3">
 									<label for="address">주소</label> <input type="text"
-										class="form-control" name="address1" id="address1"
+										class="form-control" name="address1" id="address"
 										placeholder="서울특별시 강남구" value="${userinfo.address1 }" required>
 									<div class="invalid-feedback">주소를 입력해주세요.</div>
 								</div>
@@ -153,12 +168,13 @@
 
 							<div class="row mt-3">
 								<div class="col-lg-6 col-sm-6 text-lg-middle text-center">
-									<button type="submit" formaction="modify.do" formmethod="post"
+									<button type="submit" formaction="admin_modify.do"
+										formmethod="post"
 										class="btn btn-primary btn-lg btn-block btn-my" onclick="">수정</button>
 								</div>
 								<div class="col-lg-6 col-sm-6 text-lg-middle text-center">
 									<button type="submit" formaction="delete.do" formmethod="post"
-										class="btn btn-primary btn-lg btn-block btn-my" onclick="">탈퇴</button>
+										class="btn btn-primary btn-lg btn-block btn-my" onclick="">삭제</button>
 								</div>
 							</div>
 						</form>
@@ -168,39 +184,31 @@
 		</div>
 	</div>
 
+
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 		crossorigin="anonymous"></script>
 
-	<!--
-	<script>
-		window.addEventListener('load', () => {
-			const forms = document.getElementsByClassName('validation-form');
-			Array.prototype.filter.call(forms, (form) => {
-				form.addEventListener('submit', function (event) {
-					if (form.checkValidity() === false) {
-						event.preventDefault();
-						event.stopPropagation();
-					}
-					form.classList.add('was-validated');
-				}, false);
-			});
-		}, false);
-	</script>	
-	-->
-
 	<script
 		src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script>
 		function onPostCode() {
-			new daum.Postcode(
-					{
-						oncomplete : function(data) {
-							console.log("oncomplete");
-							document.getElementById("address").value = data.roadAddress;
-						},
-					}).open();
+			new daum.Postcode({
+				oncomplete : function(data) {
+					//console.log("oncomplete");
+					//document.getElementById("address").value = data.roadAddress;
+					var addr = '';
+
+					if (data.userSelectedType === 'R') {
+						addr = data.roadAddress;
+					} else {
+						addr = data.jibunAddress;
+					}
+
+					document.getElementById("address").value = addr;
+				},
+			}).open();
 		}
 	</script>
 </body>

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html>
 <head>
 <meta charset="UTF-8">
@@ -14,9 +14,9 @@
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 
-<link rel="stylesheet" type="text/css" href="css/myPage_review.css">
+<link rel="stylesheet" type="text/css" href="../css/myPage_review.css">
 
-<!-- <script
+<script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 	$(function() {
@@ -38,7 +38,7 @@
 		});
 		$('#default').click();
 	});
-</script> -->
+</script>
 
 <jsp:include page="../layout/header.jsp"></jsp:include>
 <jsp:include page="../layout/footer.jsp"></jsp:include>
@@ -51,24 +51,19 @@
 				class="col-md-3 col-lg-2 d-md-block sidebar collapse">
 				<h4
 					class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-					<span>MY PAGES</span>
+					<span>관리자 페이지</span>
 				</h4>
 				<div class="position-sticky pt-3">
 					<ul class="nav flex-column tab">
-						<li data-tab="myPage_querylist" class="nav-item tabmenu" id="default"><a class="nav-link" aria-current="page"
-							href="myPage_querylist"><i class="bi bi-chat-text fs-5"></i> 문의 내역 </a></li>
+						<li data-tab="adminPage_members" class="nav-item tabmenu" id="default"><a class="nav-link active"
+							aria-current="page" href="#"><i class="bi bi-card-text fs-5"></i>
+								회원 리스트</a></li>
 						<li data-tab="myPage_query" class="nav-item tabmenu"><a class="nav-link" aria-current="page"
-							href="myPage_query"><i class="bi bi-chat-text fs-5"></i> 문의 하기 </a></li>
-						<li data-tab="myPage_review" class="nav-item tabmenu"><a class="nav-link"aria-current="page"
-							href="myPage_review"><i class="bi bi-card-text fs-5"></i> 내가 작성한 리뷰 </a></li>
-						<li data-tab="myPage_info" class="nav-item tabmenu""><a class="nav-link" aria-current="page"
-							href="myPage_info"><i class="bi bi-person fs-5"></i> 내 정보 수정 </a></li>
+							href="#"><i class="bi bi-chat-text fs-5"></i> 회원 문의 내역 </a></li>
 					</ul>
 				</div>
 			</nav>
-
 			<main id="tabcontent" class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-			
 			</main>
 		</div>
 	</div>

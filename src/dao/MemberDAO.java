@@ -3,6 +3,7 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.RequestScope;
@@ -296,5 +297,42 @@ public class MemberDAO {
 		}
 		
 		return mvo;	
+	}
+	
+	public ArrayList<MemberVO> findMembers() {
+		String sql = "select * from " + tbl;
+		ArrayList<MemberVO> memberList = new ArrayList<MemberVO>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				MemberVO mvo = new MemberVO();
+				mvo.setId(rs.getString("id"));
+				mvo.setPwd(rs.getString("pwd"));
+				mvo.setUserName(rs.getString("userName"));
+				mvo.setNickName(rs.getString("nickName"));
+				mvo.setEmail(rs.getString("email"));
+				mvo.setAddress1(rs.getString("address1"));
+				mvo.setAddress2(rs.getString("address2"));
+				mvo.setPhone(rs.getString("phone"));
+				mvo.setJoinRoute(rs.getString("joinRoute"));
+				mvo.setChargingType(rs.getString("chargingType"));
+				mvo.setAdmin(rs.getInt("admin"));
+
+				memberList.add(mvo);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+
+		return memberList;		
 	}
 }
