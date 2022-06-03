@@ -42,7 +42,7 @@ public class CommunityDAO {
 	}
 	
 	//하나의 새로운 게시글이 넘어와서 BD에 저장되는 메서드
-		public void insertBoard(CommunityVO CVO) {
+		public void insertBoard(CommunityVO CVO){
 			getCon();
 			try {
 			String sql="insert into community values(community_seq.nextval,?,?,sysdate,0,?)";

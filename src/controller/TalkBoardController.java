@@ -40,12 +40,24 @@ public class TalkBoardController {
 	//405에러 발생중. 컨트롤러 마저 다 만들고나서 DB작성이니 뭐니 해야 제대로 테스트 가능하니 일단 미뤄둡니다
 	@PostMapping("talkupdate") //글 수정
 	public String update(HttpServletRequest request) {
+		request.getAttribute("bdContent");//textArea에 있었던 데이터를 가져온다.
+		CVO.setNum((int)request.getAttribute("num"));
+		CVO.setSubject((String)request.getAttribute("title"));
+		CVO.setContent((String)request.getAttribute("bdContent"));
 		
+		
+		CDAO.updateBoard(CVO);
 		
 		return "community_talkboard";
 	}
-	@PostMapping("talkdelete") //글 삭제
+	@PostMapping("talkdelete") //글 삭제 아직 구현 안함
 	public String delete(HttpServletRequest request) {
+		request.getAttribute("bdContent");//textArea에 있었던 데이터를 가져온다.
+		CVO.setNum((int)request.getAttribute("num"));
+		CVO.setSubject((String)request.getAttribute("title"));
+		CVO.setContent((String)request.getAttribute("bdContent"));
+		
+		
 		
 		
 		return "community_talkboard";

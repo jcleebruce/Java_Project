@@ -38,7 +38,7 @@
 					<hr width = "75%">
 				</div>
 			</div>
-			<form method="post" name="talk">
+			<form method="post" name="talkboard">
 			<div class="row">
 				<div class="col-md-1">
 					<!-- 태그 공간 -->
@@ -69,9 +69,9 @@
 				<div class="col-md-3">
 					<br>
 					<div class="btn-group" role="group" aria-label="Basic example">
-						<button type="submit" value="talkwrite" class="btn btn-primary">등록</button>
-						<button type="submit" value="talkupdate" class="btn btn-primary">수정</button>
-						<button type="submit" value="talkdelete" class="btn btn-danger">삭제</button>
+						<button type="submit" value="쓰기" class="btn btn-primary" onclick="location.href='talkwrite'">등록</button>
+						<button type="submit" value="수정" class="btn btn-primary" onclick="location.href='talkupdate'">수정</button>
+						<button type="submit" value="삭제" class="btn btn-danger" onclick="location.href='talkdelete'">삭제</button>
 					</div>
 				</div>
 			</div>

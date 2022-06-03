@@ -85,9 +85,9 @@ public class BoardController {
 		return "community_talkboard";//글을 다 쓰고 자유게시판으로 이동
 	}
 	
-	@GetMapping("/searchtext") //
+	@GetMapping("/search") //
 	public String search(HttpServletRequest request) {
-		request.getAttribute("searchtext"); 
+		request.getAttribute("search"); 
 		CVO.setNum((int)request.getAttribute("num"));
 		CVO.setWriter((String)request.getAttribute("user"));					
 		CVO.setSubject((String)request.getAttribute("tit"));					

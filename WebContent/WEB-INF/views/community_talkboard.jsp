@@ -180,12 +180,14 @@
 	</div>
 	
 	<div class="row">
-					<div class="col-md-3">					
+					<div class="col-md-3">		
+						<form action="search" method="post">			
 						<div class="input-group">
 							<input type="text" class="form-control" placeholder="게시판검색" name="search">
 							<button class="btn btn-outline-primary" type="submit">
 								검색</button>
-						</div>					
+						</div>
+						</form>					
 					</div>
 					<div class="col-md-8"></div>
 					<div class="col-md-1">
