@@ -24,41 +24,37 @@ public class TalkBoardController {
 		return "talkboard_write";
 	}
 	
-	@PostMapping("talkwrite") //새 글 작성
+	@PostMapping("/talkwrite") //새 글 작성
 	public String write(HttpServletRequest request) {
 		//들어오고 가기전에 이 과정을 이행함
 		request.getAttribute("bdContent");//textArea에 있었던 데이터를 가져온다.
-		CVO.setNum((int)request.getAttribute("num"));
+		CVO.setWriter((String)request.getAttribute("writer"));
 		CVO.setSubject((String)request.getAttribute("title"));
 		CVO.setContent((String)request.getAttribute("bdContent"));
 		
 		
 		CDAO.insertBoard(CVO);
 		
-		return "community_talkboard";//글을 다 쓰고 자유게시판으로 이동
+		return "board";//글을 다 쓰고 이동?
+		//writer값에 not null을 줘서인지 01400오류 발생. Quary에 있는 Writer랑 합치면 어떻게 될거 같긴 한데...
 	}
-	//405에러 발생중. 컨트롤러 마저 다 만들고나서 DB작성이니 뭐니 해야 제대로 테스트 가능하니 일단 미뤄둡니다
+	
 	@PostMapping("talkupdate") //글 수정
 	public String update(HttpServletRequest request) {
-		request.getAttribute("bdContent");//textArea에 있었던 데이터를 가져온다.
-		CVO.setNum((int)request.getAttribute("num"));
+		//저 작성한 글을 받아서 num 값으로 세팅하기
+		request.getAttribute("bdContent");
+		
+		CVO.setWriter((String)request.getAttribute("writer"));
 		CVO.setSubject((String)request.getAttribute("title"));
 		CVO.setContent((String)request.getAttribute("bdContent"));
 		
-		
-		CDAO.updateBoard(CVO);
-		
+		CDAO.UpdateBoard(CVO);
 		return "community_talkboard";
 	}
-	@PostMapping("talkdelete") //글 삭제 아직 구현 안함
+	@PostMapping("talkdelete") //글 삭제
 	public String delete(HttpServletRequest request) {
-		request.getAttribute("bdContent");//textArea에 있었던 데이터를 가져온다.
-		CVO.setNum((int)request.getAttribute("num"));
-		CVO.setSubject((String)request.getAttribute("title"));
-		CVO.setContent((String)request.getAttribute("bdContent"));
 		
-		
-		
+		CDAO.deleteBoard(CVO);
 		
 		return "community_talkboard";
 	}
