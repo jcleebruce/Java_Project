@@ -39,7 +39,7 @@ public class TalkBoardController {
 		//writer값에 not null을 줘서인지 01400오류 발생. Quary에 있는 Writer랑 합치면 어떻게 될거 같긴 한데...
 	}
 	
-	@PostMapping("talkupdate") //글 수정
+	@PostMapping("/talkupdate") //글 수정
 	public String update(HttpServletRequest request) {
 		//저 작성한 글을 받아서 num 값으로 세팅하기
 		request.getAttribute("bdContent");
@@ -59,4 +59,16 @@ public class TalkBoardController {
 		return "community_talkboard";
 	}
 	
+	@GetMapping("/searchtext") //
+	public String search(HttpServletRequest request) {
+		request.getAttribute("searchtext"); 
+		CVO.setNum((int)request.getAttribute("num"));
+		CVO.setWriter((String)request.getAttribute("user"));					
+		CVO.setSubject((String)request.getAttribute("title"));					
+		CVO.setReg_date((String)request.getAttribute("date"));
+		CVO.setReadcount((int)request.getAttribute("view"));
+		CVO.setContent((String)request.getAttribute("bdContent"));
+		
+		return "community_talkboard";
+	}
 }
