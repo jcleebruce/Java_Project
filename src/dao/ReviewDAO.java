@@ -15,7 +15,7 @@ import util.DBManager;
 
 
 @Component
-public class CommunityDAO {
+public class ReviewDAO {
 	final String tbl="review";
 	
 	
@@ -27,7 +27,7 @@ public class CommunityDAO {
 		public void insertBoard(BoardVO CVO) {
 			
 			try {
-			String sql="insert into " + tbl + "(num, writer, subject, content) values(community_seq.nextval,?,?,?)";
+			String sql="insert into " + tbl + "(num, writer, subject, content) values(review_seq.nextval,?,?,?)";
 			
 			conn = DBManager.getConnection();
 			pstmt=conn.prepareStatement(sql);
@@ -53,7 +53,7 @@ public class CommunityDAO {
 			conn = DBManager.getConnection();
 			pstmt=conn.prepareStatement(sql);
 			//reply 테이블 : num(들어갈 글의 번호)/reply(댓글 내용)/replynum(댓글 번호)
-			//community에 있는 num과 reply에 있는 num을 group by로 병합하기?
+			//review에 있는 num과 reply에 있는 num을 group by로 병합하기?
 			//다른 컨트롤러에 만들어야 하나
 						
 			pstmt.setString(1, CVO.getReply());			
@@ -76,7 +76,7 @@ public class CommunityDAO {
 		int end=start+cri.getPerPageNum();
 		
 		try {
-			String sql="select * from(select A.*,Rownum Rnum from(select * from community order by regdate desc)A)" + "where Rnum>? and Rnum<=?";
+			String sql="select * from(select A.*,Rownum Rnum from(select * from review order by regdate desc)A)" + "where Rnum>? and Rnum<=?";
 			
 			conn=DBManager.getConnection();
 			pstmt=conn.prepareStatement(sql);
@@ -115,7 +115,7 @@ public class CommunityDAO {
 			
 			try {
 				conn=DBManager.getConnection();
-				//community 테이블
+				//review 테이블
 				//num(글 번호) writer(글 작성자), subject(글 제목), reg_date(글 작성일), readcount(글 조회수), content(글 내용)
 				//조횟수 증가 쿼리
 				String readsql="update board set readcount=readcount+1 where num=?";
@@ -219,7 +219,7 @@ public class CommunityDAO {
 			
 						
 			try {
-				String sql="select * from community where subject=?";
+				String sql="select * from review where subject=?";
 				pstmt=conn.prepareStatement(sql);
 				
 				pstmt.setString(1,subject);

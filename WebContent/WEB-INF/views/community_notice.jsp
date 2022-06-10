@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@page import="java.util.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,166 +45,57 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td class="num"><span>1</span></td>
-					<td class="tit">
-						<div class="text-wrap">
-							<a class="subject-link" href=""> <span class="category">[수다]</span>
-								"내용1"
-							</a>
-						</div>
-					</td>
-					<td class="user">유저닉네임</td>
-					<td class="date">날짜</td>
-					<td class="view">조회수</td>
-				</tr>
-				<tr>
-					<td class="num"><span>1</span></td>
-					<td class="tit">
-						<div class="text-wrap">
-							<a class="subject-link" href=""> <span class="category">[수다]</span>
-								"내용1"
-							</a>
-						</div>
-					</td>
-					<td class="user">유저닉네임</td>
-					<td class="date">날짜</td>
-					<td class="view">조회수</td>
-				</tr>
-				<tr>
-					<td class="num"><span>1</span></td>
-					<td class="tit">
-						<div class="text-wrap">
-							<a class="subject-link" href=""> <span class="category">[수다]</span>
-								"내용1"
-							</a>
-						</div>
-					</td>
-					<td class="user">유저닉네임</td>
-					<td class="date">날짜</td>
-					<td class="view">조회수</td>
-				</tr>
-				<tr>
-					<td class="num"><span>1</span></td>
-					<td class="tit">
-						<div class="text-wrap">
-							<a class="subject-link" href=""> <span class="category">[수다]</span>
-								"내용1"
-							</a>
-						</div>
-					</td>
-					<td class="user">유저닉네임</td>
-					<td class="date">날짜</td>
-					<td class="view">조회수</td>
-				</tr>
-				<tr>
-					<td class="num"><span>1</span></td>
-					<td class="tit">
-						<div class="text-wrap">
-							<a class="subject-link" href=""> <span class="category">[수다]</span>
-								"내용1"
-							</a>
-						</div>
-					</td>
-					<td class="user">유저닉네임</td>
-					<td class="date">날짜</td>
-					<td class="view">조회수</td>
-				</tr>
-				<tr>
-					<td class="num"><span>1</span></td>
-					<td class="tit">
-						<div class="text-wrap">
-							<a class="subject-link" href=""> <span class="category">[수다]</span>
-								"내용1"
-							</a>
-						</div>
-					</td>
-					<td class="user">유저닉네임</td>
-					<td class="date">날짜</td>
-					<td class="view">조회수</td>
-				</tr>
-				<tr>
-					<td class="num"><span>1</span></td>
-					<td class="tit">
-						<div class="text-wrap">
-							<a class="subject-link" href=""> <span class="category">[수다]</span>
-								"내용1"
-							</a>
-						</div>
-					</td>
-					<td class="user">유저닉네임</td>
-					<td class="date">날짜</td>
-					<td class="view">조회수</td>
-				</tr>
-				<tr>
-					<td class="num"><span>1</span></td>
-					<td class="tit">
-						<div class="text-wrap">
-							<a class="subject-link" href=""> <span class="category">[수다]</span>
-								"내용1"
-							</a>
-						</div>
-					</td>
-					<td class="user">유저닉네임</td>
-					<td class="date">날짜</td>
-					<td class="view">조회수</td>
-				</tr>
-				<tr>
-					<td class="num"><span>1</span></td>
-					<td class="tit">
-						<div class="text-wrap">
-							<a class="subject-link" href=""> <span class="category">[수다]</span>
-								"내용1"
-							</a>
-						</div>
-					</td>
-					<td class="user">유저닉네임</td>
-					<td class="date">날짜</td>
-					<td class="view">조회수</td>
-				</tr>
-				<tr>
-					<td class="num"><span>1</span></td>
-					<td class="tit">
-						<div class="text-wrap">
-							<a class="subject-link" href=""> <span class="category">[수다]</span>
-								"내용1"
-							</a>
-						</div>
-					</td>
-					<td class="user">유저닉네임</td>
-					<td class="date">날짜</td>
-					<td class="view">조회수</td>
-				</tr>
+				<c:choose>
+					<c:when test="${fn:length(vec) > 0}">
+						<c:forEach items="${vec }" var="vec">
+							<tr>
+								<th scope="row">${vec.num}</th>
+								<td>${vec.Subject }</td>
+								<td>${vec.Writer }</td>
+								<td>${vec.Reg_date }</td>
+								<td>${vec.Readcount }</td>
+							</tr>
+						</c:forEach>
+					</c:when>
+						<c:otherwise>
+							<tr>
+								<td colspan="6">작성한 글이 없습니다.</td>
+							</tr>
+						</c:otherwise>
+					</c:choose>							
 			</tbody>
 		</table>
 	</div>
 	
 	<div class="row">
 					<div class="col-md-3">
+						<!-- <form method="get" name="search">					
 						<div class="input-group">
-							<input type="text" class="form-control" placeholder="게시판검색">
-							<button class="btn btn-outline-primary" type="button">
+						
+							<input type="text" class="form-control" placeholder="Search" name="searchtext">
+							<button class="btn btn-outline-primary" type="submit">
 								검색</button>
 						</div>
+					</form>		 -->
 					</div>
 					<div class="col-md-8"></div>
+					<div class="col-md-1">
+							<button class="btn btn-primary float-right" type="button" onclick="location.href='noticewrite'">글쓰기</button> 
+					</div>
 					<div>
 						<nav aria-label="pagenav">
 							<ul class="pagination justify-content-center">
-								<li class="page-item disabled"><a class="page-link">이전</a>
-									<!-- 페이지수가 늘어나면 이 태그를 아래로 내려서 활성화 가능 --></li>
-								<li class="page-item"><a class="page-link" href="#">1</a></li>
-								<li class="page-item"><a class="page-link" href="#">2</a></li>
-								<li class="page-item"><a class="page-link" href="#">4</a></li>
-								<li class="page-item"><a class="page-link" href="#">5</a></li>
-								<li class="page-item"><a class="page-link" href="#">6</a></li>
-								<li class="page-item"><a class="page-link" href="#">7</a></li>
-								<li class="page-item"><a class="page-link" href="#">8</a></li>
-								<li class="page-item"><a class="page-link" href="#">9</a></li>
-								<li class="page-item">
-									<!-- 일단 임의로 1페이지, 나중에 어느정도 완성 되면 for문 돌리는게 좋을듯--> <a
-									class="page-link" href="#">다음</a>
+							<c:if test="${pageMaker.prev }">
+								<li class="page-item"><a class="page-link" href='<c:url value="community_notice?page=${pageMaker.startPage-1 }"/>'>이전</a></li>
+							</c:if>		
+							<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="pageNum">
+								<li class="page-item"><a class="page-link" href='<c:url value="community_notice?page=${pageNum }"/>'>${pageNum }</a>
+								</li>							
+							</c:forEach>	
+							<c:if test="${pageMaker.next && pageMaker.endPage > 0 }">
+								 <li class="page-item"><a class="page-link"	href='<c:url value="community_notice?page=${pageMaker.endPage+1 }"/>'>다음</a>
 								</li>
+							</c:if>
 							</ul>
 						</nav>
 					</div>

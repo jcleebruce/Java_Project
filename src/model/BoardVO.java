@@ -3,7 +3,7 @@ package model;
 import org.springframework.stereotype.Component;
 
 @Component 
-public class CommunityVO {
+public class BoardVO {
 	private int	num; //글 번호
 	private String writer; //글 작성자
 	private String subject; //글 제목

@@ -11,20 +11,20 @@ import dao.CommunityDAO;
 import model.BoardVO;
 
 @Controller
-public class TalkBoardController {
+public class ReviewController {
 	
 	@Autowired
 	BoardVO CVO;
 	@Autowired
 	CommunityDAO CDAO;
 	
-	@GetMapping("/talkwrite")
-	public String talkboard_write() {
+	@GetMapping("/reviewwrite")
+	public String reviewwrite_write() {
 		
 		return "talkboard_write";
 	}
 	
-	@PostMapping("/talkwrite") //새 글 작성
+	@PostMapping("/reviewwrite") //새 글 작성
 	public String write(HttpServletRequest request) {
 		//들어오고 가기전에 이 과정을 이행함
 		request.getAttribute("bdContent");//textArea에 있었던 데이터를 가져온다.
@@ -39,7 +39,7 @@ public class TalkBoardController {
 		//writer값에 not null을 줘서인지 01400오류 발생. Quary에 있는 Writer랑 합치면 어떻게 될거 같긴 한데...
 	}
 	
-	@PostMapping("/talkupdate") //글 수정
+	@PostMapping("/reviewupdate") //글 수정
 	public String update(HttpServletRequest request) {
 		//저 작성한 글을 받아서 num 값으로 세팅하기
 		request.getAttribute("bdContent");
@@ -49,15 +49,16 @@ public class TalkBoardController {
 		CVO.setContent((String)request.getAttribute("bdContent"));
 		
 		CDAO.UpdateBoard(CVO);
-		return "community_talkboard";
+		return "community_review";
 	}
-	@PostMapping("talkdelete") //글 삭제
+	@PostMapping("reviewdelete") //글 삭제
 	public String delete(HttpServletRequest request) {
 		
 		CDAO.deleteBoard(CVO);
 		
-		return "community_talkboard";
+		return "community_review";
 	}
+	
 	/*
 	 * @GetMapping("/searchtext") // public String search(HttpServletRequest
 	 * request) { request.getAttribute("searchtext");
@@ -68,6 +69,6 @@ public class TalkBoardController {
 	 * CVO.setReadcount((int)request.getAttribute("view"));
 	 * CVO.setContent((String)request.getAttribute("bdContent"));
 	 * 
-	 * return "community_talkboard"; }
+	 * return "community_review"; }
 	 */
 }

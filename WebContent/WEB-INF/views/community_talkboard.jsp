@@ -69,14 +69,14 @@
 	
 	<div class="row">
 					<div class="col-md-3">
-					<form method="get" name="search">					
+					<!-- <form method="get" name="search">					
 						<div class="input-group">
 						
-							<input type="text" class="form-control" placeholder="Search" name="searchtext">
+							<input type="text" class="form-control" placeholder="Search" name="searchtalr">
 							<button class="btn btn-outline-primary" type="submit">
 								검색</button>
 						</div>
-					</form>					
+					</form>	 -->				
 					</div>
 					<div class="col-md-8"></div>
 					<div class="col-md-1">
