@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
+import dao.AnswerDAO;
 import dao.MemberDAO;
 import dao.QueryDAO;
 import model.Criteria;
@@ -34,6 +35,9 @@ public class myPageController {
 	
 	@Autowired
 	QueryVO qvo;
+	
+	@Autowired
+	AnswerDAO adao;
 
 	@GetMapping("/myPage")
 	public String myPage() {
@@ -89,6 +93,14 @@ public class myPageController {
 	public String talkboard() {
 		
 		return "talkboard_write";
+	}
+	
+	@GetMapping("/myPage_query_content")
+	public String myPage_query_content(QueryVO qvo, Model model) {
+		
+		model.addAttribute("bList",qdao.oneQuery(qvo.getBno(), qvo.getWriter()));
+		
+		return "myPage_query_content";
 	}
 
 	@PostMapping("/modify.do")
@@ -171,5 +183,27 @@ public class myPageController {
 		
 		return "redirect:/myPage_querylist";
 	}
+	
+	@GetMapping("/myPage_querylist_select")
+	public String myPage_querylist_select(Model model, HttpServletRequest request, HttpServletResponse response) {
+		String bno = request.getParameter("bno");
+		String writer = request.getParameter("writer");
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
+		
+		//System.out.println("myPage_querylist_select : " + bno + ", " + title + ", " + content);	
+				
+		ArrayList<String> contents = adao.selectBoard(Integer.parseInt(bno));
+		
+		if (contents != null) {
+			model.addAttribute("answers", contents);		
+			model.addAttribute("bno", bno);
+			model.addAttribute("writer", writer);
+			model.addAttribute("title", title);
+			model.addAttribute("content", content);			
+		}
+				
+		return "myPage_answer";
+	}	
 
 }

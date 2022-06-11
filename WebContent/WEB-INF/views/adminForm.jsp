@@ -16,30 +16,6 @@
 
 <link rel="stylesheet" type="text/css" href="../css/myPage_review.css">
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script>
-	$(function() {
-		// tab operation
-		$('.tabmenu').click(function() {
-			var activeTab = $(this).attr('data-tab');
-			
-			$.ajax({
-				type : 'GET', //get방식으로 통신
-				url : activeTab, //탭의 data-tab속성의 값으로 된 html파일로 통신
-				dataType : "html", //html형식으로 값 읽기
-				error : function() { //통신 실패시
-					alert('통신실패!');
-				},
-				success : function(data) { //통신 성공시 탭 내용담는 div를 읽어들인 값으로 채운다.
-					$('#tabcontent').html(data);
-				}
-			});
-		});
-		$('#default').click();
-	});
-</script>
-
 <jsp:include page="../layout/header.jsp"></jsp:include>
 <jsp:include page="../layout/footer.jsp"></jsp:include>
 
@@ -55,11 +31,10 @@
 				</h4>
 				<div class="position-sticky pt-3">
 					<ul class="nav flex-column tab">
-						<li data-tab="adminPage_members" class="nav-item tabmenu" id="default"><a class="nav-link active"
-							aria-current="page" href="#"><i class="bi bi-card-text fs-5"></i>
-								회원 리스트</a></li>
-						<li data-tab="myPage_query" class="nav-item tabmenu"><a class="nav-link" aria-current="page"
-							href="#"><i class="bi bi-chat-text fs-5"></i> 회원 문의 내역 </a></li>
+						<li data-tab="adminPage_members" class="nav-item tabmenu" id="default"><a class="nav-link active" aria-current="page"
+							href="adminPage_members"><i class="bi bi-chat-text fs-5"></i> 회원 리스트</a></li>
+						<li data-tab="adminPage_querylist" class="nav-item tabmenu"><a class="nav-link" aria-current="page"
+							href="adminPage_querylist"><i class="bi bi-chat-text fs-5"></i> 회원 문의 내역 </a></li>
 					</ul>
 				</div>
 			</nav>

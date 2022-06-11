@@ -30,7 +30,7 @@
 				class="col-md-3 col-lg-2 d-md-block sidebar collapse">
 				<h4
 					class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-					<span>MY PAGES</span>
+					<span>답변</span>
 				</h4>
 				<div class="position-sticky pt-3">
 					<ul class="nav flex-column tab">
@@ -52,81 +52,75 @@
 			</nav>
 
 			<main id="tabcontent" class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-
-				<div class="chartjs-size-monitor">
-					<div class="chartjs-size-monitor-expand">
-						<div class=""></div>
+				<form action="" method="post">
+					<div class="chartjs-size-monitor">
+						<div class="chartjs-size-monitor-expand">
+							<div class=""></div>
+						</div>
+						<div class="chartjs-size-monitor-shrink">
+							<div class=""></div>
+						</div>
 					</div>
-					<div class="chartjs-size-monitor-shrink">
-						<div class=""></div>
+					<div
+						class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+						<h1 class="h3">문의 내역</h1>
 					</div>
-				</div>
-				<div
-					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-					<h1 class="h3">문의 내역</h1>
-				</div>
 
-				<div class="table-responsive">
-					<table class="table table-hover table-sm">
-						<colgroup>
-							<col class="size01" data-alias="number">
-							<col class="size02" data-alias="subject">
-							<col class="size03" data-alias="writer">
-							<col class="size04" data-alias="date">
-						</colgroup>
-						<thead>
-							<tr>
-								<th scope="col">번호</th>
-								<th scope="col">제목</th>
-								<th scope="col">글쓴이</th>
-								<th scope="col">등록일</th>
-							</tr>
-						</thead>
-						<tbody>
+					<div class="col-lg-9 ml-auto bg-white sticky-top py-2">
+						<div class="row">
+
+
+							<div class="col-md-12">
+								<input type="text" class="form-control" value="${title}" disabled="disabled">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<br>
+								<div class="form-group">
+									<textarea class="form-control" rows="10" disabled="disabled">${content}</textarea>
+								</div>
+							</div>
+						</div>
+						<!-- <ul> -->
 							<c:choose>
-								<c:when test="${fn:length(list) > 0}">
-									<c:forEach items="${list }" var="bList">
-										<tr>
-											<th scope="row">${bList.bno }</th>
-											<td>
-												<a href="myPage_querylist_select?bno=${bList.bno}&writer=${bList.writer}&title=${bList.title}&content=${bList.content}"> ${bList.title }</a>
-											</td>												
-											<td>${bList.writer }</td>
-											<td>${bList.regdate }</td>
-										</tr>
+								<c:when test="${fn:length(answers) > 0}">
+									<c:forEach items="${answers}" var="answer">
+										<%-- <li>답변 : ${answer}</li>	 --%>
+										<div class="row">
+											<div class="col-md-12">
+												<br>
+												<div class="form-group">
+													<textarea class="form-control" rows="10" disabled="disabled">${answer}</textarea>
+												</div>
+											</div>
+										</div>
 									</c:forEach>
 								</c:when>
 								<c:otherwise>
-									<tr>
-										<td colspan="5">작성한 글이 없습니다.</td>
-									</tr>
+									<!-- <tr>
+										<td colspan="5">아직 답변이 없습니다.</td>
+									</tr> -->
+									<div class="row">
+											<div class="col-md-12">
+												<br>
+												<div class="form-group">
+													<textarea class="form-control" rows="1" disabled="disabled">● 아직 답변이 없습니다.</textarea>
+												</div>
+											</div>
+										</div>
 								</c:otherwise>
 							</c:choose>
-						</tbody>
-					</table>
-				</div>
+						<!-- </ul> -->
 
-				<div>
-					<ul class="pagination pagination-sm justify-content-center">
-						<c:if test="${pageMaker.prev }">
-							<li class="page-item"><a class="page-link"
-								href='<c:url value="myPage_querylist?page=${pageMaker.startPage-1 }"/>'>이전</a>
-							</li>
-						</c:if>
-						<c:forEach begin="${pageMaker.startPage }"
-							end="${pageMaker.endPage }" var="pageNum">
-							<li class="page-item"><a class="page-link"
-								href='<c:url value="myPage_querylist?page=${pageNum }"/>'>${pageNum }</a>
-							</li>
-						</c:forEach>
-						<c:if test="${pageMaker.next && pageMaker.endPage > 0 }">
-							<li class="page-item"><a class="page-link"
-								href='<c:url value="myPage_querylist?page=${pageMaker.endPage+1 }"/>'>다음</a>
-							</li>
-						</c:if>
-					</ul>
-				</div>
-
+						<div class="row mt-3">
+							<div class="text-end">
+								<button type="button"
+									class="btn btn-primary btn btn-block btn-my"
+									onclick="location.href='myPage_querylist'">뒤로</button>
+							</div>
+						</div>
+				</form>
 			</main>
 		</div>
 	</div>

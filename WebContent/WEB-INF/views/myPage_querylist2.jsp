@@ -88,9 +88,9 @@
 									<c:forEach items="${list }" var="bList">
 										<tr>
 											<th scope="row">${bList.bno }</th>
-											<td>
-												<a href="myPage_querylist_select?bno=${bList.bno}&writer=${bList.writer}&title=${bList.title}&content=${bList.content}"> ${bList.title }</a>
-											</td>												
+											<td><a class="subject-link"
+												href="myPage_query_content?writer=${bList.writer}&bno=${bList.bno}"> <span
+												class="category"></span>${bList.title }</a></td>
 											<td>${bList.writer }</td>
 											<td>${bList.regdate }</td>
 										</tr>

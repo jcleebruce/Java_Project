@@ -24,7 +24,7 @@ main {
 }
 
 body {
-	background-color: #f5f5f5;
+	/* background-color: #f5f5f5; */
 }
 
 .form-signin {
@@ -59,18 +59,17 @@ body {
 
 	<main class="form-signin">
 		<form action="login.do" method="post">
-			<img class="mb-4 mx-auto" src="*" alt="" width="72" height="57">
-			<h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+			<img class="mb-4 mx-auto" src="images/logo2.PNG" alt="" width="92" height="112">
+			<h1 class="h3 mb-3 fw-normal">로그인</h1>
 
 			<div class="form-floating">
 				<input type="text" name="id" class="form-control" id="floatingInput"
-					placeholder="name@example.com"> <label for="floatingInput">Id
-					address</label>
+					placeholder="name@example.com"> <label for="floatingInput">아이디</label>
 			</div>
 			<div class="form-floating">
 				<input type="password" name="pwd" class="form-control"
 					id="floatingPassword" placeholder="Password"> <label
-					for="floatingPassword">Password</label>
+					for="floatingPassword">비밀번호</label>
 			</div>
 
 			<div class="checkbox mb-3">
