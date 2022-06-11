@@ -30,25 +30,16 @@
 				class="col-md-3 col-lg-2 d-md-block sidebar collapse">
 				<h4
 					class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-					<span>MY PAGES</span>
+					<span>관리자 페이지</span>
 				</h4>
 				<div class="position-sticky pt-3">
 					<ul class="nav flex-column tab">
-						<li data-tab="myPage_querylist" class="nav-item tabmenu"
-							id="default"><a class="nav-link" aria-current="page"
-							href="myPage_querylist"><i class="bi bi-chat-text fs-5"></i>
-								문의 내역 </a></li>
-						<li data-tab="myPage_query" class="nav-item tabmenu"><a
-							class="nav-link" aria-current="page" href="myPage_query"><i
-								class="bi bi-chat-text fs-5"></i> 문의 하기 </a></li>
-						<li data-tab="myPage_review" class="nav-item tabmenu"><a
-							class="nav-link" aria-current="page" href="myPage_review"><i
-								class="bi bi-card-text fs-5"></i> 내가 작성한 리뷰 </a></li>
-						<li data-tab="myPage_info" class="nav-item tabmenu""><a
-							class="nav-link" aria-current="page" href="myPage_info"><i
-								class="bi bi-person fs-5"></i> 내 정보 수정 </a></li>
+						<li data-tab="adminPage_members" class="nav-item tabmenu" id="default"><a class="nav-link" aria-current="page"
+							href="adminPage_members"><i class="bi bi-chat-text fs-5"></i> 회원 리스트</a></li>
+						<li data-tab="adminPage_querylist" class="nav-item tabmenu"><a class="nav-link active" aria-current="page"
+							href="adminPage_querylist"><i class="bi bi-chat-text fs-5"></i> 회원 문의 내역 </a></li>
 					</ul>
-				</div>
+				</div>				
 			</nav>
 
 			<main id="tabcontent" class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
@@ -63,7 +54,7 @@
 				</div>
 				<div
 					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-					<h1 class="h3">문의 내역</h1>
+					<h1 class="h3">회원 문의 내역</h1>
 				</div>
 
 				<div class="table-responsive">
@@ -89,8 +80,8 @@
 										<tr>
 											<th scope="row">${bList.bno }</th>
 											<td>
-												<a href="myPage_querylist_select?bno=${bList.bno}&writer=${bList.writer}&title=${bList.title}&content=${bList.content}"> ${bList.title }</a>
-											</td>												
+												<a href="adminPage_querylist_select?bno=${bList.bno}&writer=${bList.writer}"> ${bList.title }</a>
+											</td>											
 											<td>${bList.writer }</td>
 											<td>${bList.regdate }</td>
 										</tr>

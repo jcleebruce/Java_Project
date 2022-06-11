@@ -12,11 +12,13 @@
 	crossorigin="anonymous">
 
 <style type="text/css">
+@import url(//fonts.googleapis.com/earlyaccess/jejuhallasan.css);
 header {
 	height: 56px;
 }
-.btn btn-outline-primary{
-display: inline-block;
+
+#title {
+	font-family: 'Jeju Hallasan';
 }
 </style>
 </head>
@@ -25,8 +27,8 @@ display: inline-block;
 	<header>
 		<nav class="navbar navbar-light bg-light fixed-top">
 			<div class="container-fluid justify-content-center">
-				<a class="navbar-brand" href="#">title</a>
-				<button type="button" class="btn btn-outline-primary">sign-up</button>			
+				<a class="navbar-brand" id="title" href="mainForm">PICCA</a>
+				<button type="button" class="btn btn-outline-primary">로그인</button>			
 			</div>
 		</nav>
 	</header>

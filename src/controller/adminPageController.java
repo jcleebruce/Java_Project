@@ -9,10 +9,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.servlet.ModelAndView;
 
+import dao.AnswerDAO;
 import dao.MemberDAO;
+import dao.QueryDAO;
+import model.AnswerVO;
+import model.Criteria;
 import model.MemberVO;
+import model.PageMaker;
+import model.QueryVO;
 import util.ScriptUtils;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -20,6 +29,18 @@ public class adminPageController {
 
 	@Autowired
 	MemberDAO mdao;
+	
+	@Autowired
+	QueryDAO qdao;
+	
+	@Autowired
+	QueryVO qvo;
+	
+	@Autowired
+	AnswerDAO adao;
+	
+	@Autowired
+	AnswerVO avo;
 	
 	@GetMapping("/adminPage")
 	public String adminPage() {
@@ -99,6 +120,58 @@ public class adminPageController {
 		}
 		
 		return "adminForm";
+	}	
+	
+	@GetMapping("/adminPage_querylist")
+	public ModelAndView adminPage_querylist(Criteria cri) {
+
+		ModelAndView mav=new ModelAndView("adminPage_querylist");
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(qdao.countAllBoard());
+		
+		System.out.println("adminPage_querylist : " + pageMaker.getTotalCount());
+		
+		ArrayList<QueryVO> list= qdao.allQuery(cri);
+		mav.addObject("list", list);
+		mav.addObject("pageMaker",pageMaker);
+		
+		/*
+		 * System.out.println(cri.getPageStart());
+		 * System.out.println(cri.getPerPageNum());
+		 */
+
+		return mav;
+	}
+	
+	@GetMapping("/adminPage_querylist_select")
+	public String adminPage_querylist_select(Model model, HttpServletRequest request, HttpServletResponse response) {
+		String bno = request.getParameter("bno");
+		String writer = request.getParameter("writer");
+		System.out.println(bno + ", " + writer);	
+		
+		qvo = qdao.oneQuery(Integer.parseInt(bno), writer);
+		
+		if (qvo != null) {
+			System.out.println("Content : " + qvo.getContent());	
+			
+			model.addAttribute("title", "[RE]: " + qvo.getTitle());		
+			model.addAttribute("rebno", qvo.getBno());		
+
+		} 
+		
+		return "adminPage_answer";
+	}	
+	
+	@PostMapping("/answer_insert.do")
+	public String query_insert(@SessionAttribute("user") MemberVO user, AnswerVO avo) {
+		System.out.println(user.getNickName() + ", " + avo.getRebno());	
+		avo.setWriter(user.getNickName());
+
+		adao.insertBoard(avo);
+		
+		return "redirect:/adminPage_querylist";
 	}	
 }
 	

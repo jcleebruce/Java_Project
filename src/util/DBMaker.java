@@ -394,16 +394,16 @@ public class DBMaker {
 		System.out.println("Start OpenAPI GET & Database Insert!");
 		
 		int idx = 0;
-		String[] region = new String[17];
+		String[] region = new String[16];
 		
 		region[idx++] = "11"; //서울특별시
 		region[idx++] = "26"; //부산광역시
 		region[idx++] = "27"; //대구광역시
 		region[idx++] = "28"; //인천광역시
 		region[idx++] = "29"; //광주광역시
-		region[idx++] = "30"; //대전광역시
+		region[idx++] = "30"; //대전광역시 //삽입완료
 		region[idx++] = "31"; //울산광역시
-		region[idx++] = "36"; //세종특별자치시
+		//region[idx++] = "36"; //세종특별자치시
 		region[idx++] = "41"; //경기도
 		region[idx++] = "42"; //강원도
 		region[idx++] = "43"; //충청북도
@@ -417,13 +417,11 @@ public class DBMaker {
 		//delete("CHARGINGSTATION");
 		
 		try {
-			/*
+			
 			for (int n=0; n<region.length; n++) {
 				get(region[n]);
 			}			
-			*/
 			
-			get("36");
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}	

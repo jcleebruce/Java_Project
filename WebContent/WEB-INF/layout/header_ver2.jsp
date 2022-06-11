@@ -12,8 +12,13 @@
 	crossorigin="anonymous">
 
 <style type="text/css">
+@import url(//fonts.googleapis.com/earlyaccess/jejuhallasan.css);
 header {
 	height: 56px;
+}
+
+#title {
+	font-family: 'Jeju Hallasan';
 }
 </style>
 </head>
@@ -22,7 +27,7 @@ header {
 	<header>
 		<nav class="navbar navbar-light bg-light fixed-top">
 			<div class="container-fluid justify-content-center">
-				<a class="navbar-brand" href="#">title</a>
+				<a class="navbar-brand" id="title" href="mainForm">PICCA</a>
 			</div>
 		</nav>
 	</header>

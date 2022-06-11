@@ -31,12 +31,10 @@
 				</h4>
 				<div class="position-sticky pt-3">
 					<ul class="nav flex-column tab">
-						<li data-tab="adminPage_members" class="nav-item tabmenu"
-							id="default"><a class="nav-link active" aria-current="page"
-							href="adminPage_members"><i class="bi bi-card-text fs-5"></i> 회원 리스트</a></li>
-						<li data-tab="myPage_query" class="nav-item tabmenu"><a
-							class="nav-link" aria-current="page" href="#"><i
-								class="bi bi-chat-text fs-5"></i> 회원 문의 내역 </a></li>
+						<li data-tab="adminPage_members" class="nav-item tabmenu" id="default"><a class="nav-link active" aria-current="page"
+							href="adminPage_members"><i class="bi bi-chat-text fs-5"></i> 회원 리스트</a></li>
+						<li data-tab="adminPage_querylist" class="nav-item tabmenu"><a class="nav-link" aria-current="page"
+							href="adminPage_querylist"><i class="bi bi-chat-text fs-5"></i> 회원 문의 내역 </a></li>
 					</ul>
 				</div>
 			</nav>
