@@ -35,7 +35,7 @@
 				<div class="position-sticky pt-3">
 					<ul class="nav flex-column tab">
 						<li data-tab="myPage_querylist" class="nav-item tabmenu"
-							id="default"><a class="nav-link" aria-current="page"
+							id="default"><a class="nav-link active" aria-current="page"
 							href="myPage_querylist"><i class="bi bi-chat-text fs-5"></i>
 								문의 내역 </a></li>
 						<li data-tab="myPage_query" class="nav-item tabmenu"><a
@@ -89,7 +89,7 @@
 										<tr>
 											<th scope="row">${bList.bno }</th>
 											<td>
-												<a href="myPage_querylist_select?bno=${bList.bno}&writer=${bList.writer}&title=${bList.title}&content=${bList.content}"> ${bList.title }</a>
+												<a class="nav-link" style="color: #222" href="myPage_querylist_select?bno=${bList.bno}&writer=${bList.writer}&title=${bList.title}&content=${bList.content}"> ${bList.title }</a>
 											</td>												
 											<td>${bList.writer }</td>
 											<td>${bList.regdate }</td>

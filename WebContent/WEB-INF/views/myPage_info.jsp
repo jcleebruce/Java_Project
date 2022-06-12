@@ -45,7 +45,7 @@
 							class="nav-link" aria-current="page" href="myPage_review"><i
 								class="bi bi-card-text fs-5"></i> 내가 작성한 리뷰 </a></li>
 						<li data-tab="myPage_info" class="nav-item tabmenu""><a
-							class="nav-link" aria-current="page" href="myPage_info"><i
+							class="nav-link active" aria-current="page" href="myPage_info"><i
 								class="bi bi-person fs-5"></i> 내 정보 수정 </a></li>
 					</ul>
 				</div>
@@ -103,9 +103,8 @@
 									<div class="invalid-feedback">주소를 입력해주세요.</div>
 								</div>
 								<div class="col-md-3 mb-3">
-									<button class="btn btn-primary btn-block"
-										style="margin-top: 24px;" onclick="onPostCode()">주소
-										검색</button>
+									<button class="btn btn-primary btn-block" type='button'
+										style="margin-top: 24px;" onclick="onPostCode()">주소 검색</button>
 								</div>
 							</div>
 
@@ -194,13 +193,40 @@
 		src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script>
 		function onPostCode() {
-			new daum.Postcode(
-					{
-						oncomplete : function(data) {
-							console.log("oncomplete");
-							document.getElementById("address").value = data.roadAddress;
-						},
-					}).open();
+			console.log("onPostCode")
+			daum.postcode
+					.load(function() {
+						new daum.Postcode(
+								{
+									oncomplete : function(data) {
+										console.log("oncomplete")
+										document.getElementById("address1").value = data.roadAddress;
+									}
+								}).open();
+					});
+		}
+
+		function onModify() {
+			if (confirm("정말 수정하시겠습니까?") == true) {
+				document.form.addEventListener('submit', function(event) {
+					if (document.form.checkValidity() == false) {
+						event.preventDefault();
+						event.stopPropagation();
+					} else
+						document.form.submit();
+					document.form.classList.add('was-validated');
+				}, false);
+			} else {
+
+			}
+		}
+
+		function onDelete() {
+			if (confirm("정말 탈퇴하시겠습니까?") == true) {
+
+			} else {
+
+			}
 		}
 	</script>
 </body>

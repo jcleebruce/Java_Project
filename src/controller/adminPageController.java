@@ -29,53 +29,56 @@ public class adminPageController {
 
 	@Autowired
 	MemberDAO mdao;
-	
+
+	@Autowired
+	MemberVO mvo;
+
 	@Autowired
 	QueryDAO qdao;
-	
+
 	@Autowired
 	QueryVO qvo;
-	
+
 	@Autowired
 	AnswerDAO adao;
-	
+
 	@Autowired
 	AnswerVO avo;
-	
+
 	@GetMapping("/adminPage")
 	public String adminPage() {
 
 		return "forward:/adminPage_members";
 	}
-	
+
 	@GetMapping("/adminPage_members")
 	public String adminPage_members(Model model) {
 		List<MemberVO> members = mdao.findMembers();
 		model.addAttribute("members", members);
-				
+
 		return "adminPage_members";
-	}	
-	
+	}
+
 	@GetMapping("/adminPage_memberInfo")
 	public String adminPage_memberInfo(Model model, HttpServletRequest request, HttpServletResponse response) {
 		String id = request.getParameter("id");
-		System.out.println(id + " : 시도");	
-		
+		System.out.println(id + " : 시도");
+
 		MemberVO member = mdao.read(id);
 
 		if (member != null) {
 
-			System.out.println(id + " : 성공");	
-			model.addAttribute("userinfo", member);					
+			System.out.println(id + " : 성공");
+			model.addAttribute("userinfo", member);
 
-		} 
+		}
 		return "adminPage_memberInfo";
 	}
-	
+
 	@PostMapping("/admin_modify.do")
-	public String admin_modify(MemberVO user, Model model, HttpServletRequest request, HttpServletResponse response) {
+	public void admin_modify(MemberVO user, Model model, HttpServletRequest request, HttpServletResponse response) {
 		MemberVO mvo;
-		
+
 		try {
 			mvo = new MemberVO();
 			mvo.setId(request.getParameter("id"));
@@ -88,55 +91,81 @@ public class adminPageController {
 			mvo.setPhone(request.getParameter("phone"));
 			mvo.setJoinRoute(request.getParameter("joinRoute"));
 			mvo.setChargingType(request.getParameter("chargingType"));
-			
+
 			int result = mdao.update(mvo);
 
 			if (result == 1) {
 
 				System.out.println("수정완료");
-				
+
 				try {
-					ScriptUtils.alert(response, "수정에 성공했습니다.");
+					ScriptUtils.alertAndMovePage(response, "수정에 성공했습니다.", "adminPage_members");
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-
-				return "adminForm";
 
 			} else {
 				System.out.println("수정실패");
 				try {
-					ScriptUtils.alert(response, "수정에 실패했습니다.");
+					ScriptUtils.alertAndMovePage(response, "수정에 실패했습니다.", "adminPage_members");
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				
-				return "adminForm";
 
-			}			
-			
+			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		return "adminForm";
-	}	
-	
+
+		/* return "forward:/adminPage_members"; */
+	}
+
+	@PostMapping("/admin_delete.do")
+	public void admin_delete(MemberVO user, Model model, HttpServletRequest request, HttpServletResponse response) {
+		int result = mdao.delete(user.getId());
+
+		try {
+			if (result == 1) {
+
+				System.out.println("삭제완료");
+
+				try {
+					ScriptUtils.alertAndMovePage(response, "삭제에 성공했습니다.", "adminPage_members");
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+			} else {
+				System.out.println("삭제실패");
+				try {
+					ScriptUtils.alertAndMovePage(response, "삭제에 실패했습니다.", "adminPage_members");
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 	@GetMapping("/adminPage_querylist")
 	public ModelAndView adminPage_querylist(Criteria cri) {
 
-		ModelAndView mav=new ModelAndView("adminPage_querylist");
-		
+		ModelAndView mav = new ModelAndView("adminPage_querylist");
+
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
 		pageMaker.setTotalCount(qdao.countAllBoard());
-		
+
 		System.out.println("adminPage_querylist : " + pageMaker.getTotalCount());
-		
-		ArrayList<QueryVO> list= qdao.allQuery(cri);
+
+		ArrayList<QueryVO> list = qdao.allQuery(cri);
 		mav.addObject("list", list);
-		mav.addObject("pageMaker",pageMaker);
-		
+		mav.addObject("pageMaker", pageMaker);
+
 		/*
 		 * System.out.println(cri.getPageStart());
 		 * System.out.println(cri.getPerPageNum());
@@ -144,34 +173,42 @@ public class adminPageController {
 
 		return mav;
 	}
-	
+
 	@GetMapping("/adminPage_querylist_select")
 	public String adminPage_querylist_select(Model model, HttpServletRequest request, HttpServletResponse response) {
 		String bno = request.getParameter("bno");
 		String writer = request.getParameter("writer");
-		System.out.println(bno + ", " + writer);	
-		
-		qvo = qdao.oneQuery(Integer.parseInt(bno), writer);
-		
-		if (qvo != null) {
-			System.out.println("Content : " + qvo.getContent());	
-			
-			model.addAttribute("title", "[RE]: " + qvo.getTitle());		
-			model.addAttribute("rebno", qvo.getBno());		
+		System.out.println(bno + ", " + writer);
 
-		} 
+		qvo = qdao.oneQuery(Integer.parseInt(bno), writer);
+
+		if (qvo != null) {
+			System.out.println("Content : " + qvo.getContent());
+
+			model.addAttribute("title", "[RE]: " + qvo.getTitle());
+			model.addAttribute("rebno", qvo.getBno());
+
+		}
+
+		avo = adao.oneQuery(Integer.parseInt(bno));
+
+		if (avo != null) {
+			model.addAttribute("avo", avo);
+		}
 		
+		System.out.println(avo.getWriter());
+
 		return "adminPage_answer";
-	}	
-	
+	}
+
 	@PostMapping("/answer_insert.do")
 	public String query_insert(@SessionAttribute("user") MemberVO user, AnswerVO avo) {
-		System.out.println(user.getNickName() + ", " + avo.getRebno());	
+		System.out.println(user.getNickName() + ", " + avo.getRebno());
 		avo.setWriter(user.getNickName());
 
 		adao.insertBoard(avo);
-		
+
 		return "redirect:/adminPage_querylist";
-	}	
+	}
+
 }
-	

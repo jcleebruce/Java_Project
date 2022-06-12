@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import dao.AnswerDAO;
@@ -23,6 +24,7 @@ import model.QueryVO;
 import util.ScriptUtils;
 
 @Controller
+@SessionAttributes("user")
 public class myPageController {
 	@Autowired
 	MemberDAO mdao;
@@ -104,7 +106,7 @@ public class myPageController {
 	}
 
 	@PostMapping("/modify.do")
-	public String modify(@SessionAttribute("user") MemberVO user, Model model, HttpServletRequest request,
+	public void modify(@SessionAttribute("user") MemberVO user, Model model, HttpServletRequest request,
 			HttpServletResponse response) {
 
 		try {
@@ -131,21 +133,23 @@ public class myPageController {
 			user = mdao.read(user.getId());
 			model.addAttribute("user", user);
 			try {
-				ScriptUtils.alert(response, "수정에 성공했습니다.");
+				//ScriptUtils.alert(response, "수정에 성공했습니다.");
+				response.sendRedirect("myPage_querylist");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 
-			return "myPageForm";
+			//return "myPage_querylist";
 
 		} else {
 			System.out.println("수정실패");
 			try {
-				ScriptUtils.alert(response, "수정에 실패했습니다.");
+				//ScriptUtils.alert(response, "수정에 실패했습니다.");
+				response.sendRedirect("myPage_querylist");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			return "myPageForm";
+			//return "myPage_querylist";
 
 		}
 

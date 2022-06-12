@@ -80,7 +80,7 @@
 										<tr>
 											<th scope="row">${bList.bno }</th>
 											<td>
-												<a href="adminPage_querylist_select?bno=${bList.bno}&writer=${bList.writer}"> ${bList.title }</a>
+												<a class="nav-link" style="color: #222" href="adminPage_querylist_select?bno=${bList.bno}&writer=${bList.writer}"> ${bList.title }</a>
 											</td>											
 											<td>${bList.writer }</td>
 											<td>${bList.regdate }</td>
@@ -101,18 +101,18 @@
 					<ul class="pagination pagination-sm justify-content-center">
 						<c:if test="${pageMaker.prev }">
 							<li class="page-item"><a class="page-link"
-								href='<c:url value="myPage_querylist?page=${pageMaker.startPage-1 }"/>'>이전</a>
+								href='<c:url value="adminPage_querylist?page=${pageMaker.startPage-1 }"/>'>이전</a>
 							</li>
 						</c:if>
 						<c:forEach begin="${pageMaker.startPage }"
 							end="${pageMaker.endPage }" var="pageNum">
 							<li class="page-item"><a class="page-link"
-								href='<c:url value="myPage_querylist?page=${pageNum }"/>'>${pageNum }</a>
+								href='<c:url value="adminPage_querylist?page=${pageNum }"/>'>${pageNum }</a>
 							</li>
 						</c:forEach>
 						<c:if test="${pageMaker.next && pageMaker.endPage > 0 }">
 							<li class="page-item"><a class="page-link"
-								href='<c:url value="myPage_querylist?page=${pageMaker.endPage+1 }"/>'>다음</a>
+								href='<c:url value="adminPage_querylist?page=${pageMaker.endPage+1 }"/>'>다음</a>
 							</li>
 						</c:if>
 					</ul>

@@ -34,12 +34,16 @@
 				</h4>
 				<div class="position-sticky pt-3">
 					<ul class="nav flex-column tab">
-						<li data-tab="adminPage_members" class="nav-item tabmenu" id="default"><a class="nav-link" aria-current="page"
-							href="adminPage_members"><i class="bi bi-chat-text fs-5"></i> 회원 리스트</a></li>
-						<li data-tab="adminPage_querylist" class="nav-item tabmenu"><a class="nav-link active" aria-current="page"
-							href="adminPage_querylist"><i class="bi bi-chat-text fs-5"></i> 회원 문의 내역 </a></li>
+						<li data-tab="adminPage_members" class="nav-item tabmenu"
+							id="default"><a class="nav-link" aria-current="page"
+							href="adminPage_members"><i class="bi bi-chat-text fs-5"></i>
+								회원 리스트</a></li>
+						<li data-tab="adminPage_querylist" class="nav-item tabmenu"><a
+							class="nav-link active" aria-current="page"
+							href="adminPage_querylist"><i class="bi bi-chat-text fs-5"></i>
+								회원 문의 내역 </a></li>
 					</ul>
-				</div>				
+				</div>
 			</nav>
 
 			<main id="tabcontent" class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
@@ -65,27 +69,48 @@
 									name="title" id="title" value="${title}">
 							</div>
 						</div>
-						<div class="row" style="display:none;">
+						<div class="row" style="display: none;">
 							<div class="col-md-12">
-								<input type="text" class="form-control" 
-									name="rebno" id="rebno" value="${rebno}">
+								<input type="text" class="form-control" name="rebno" id="rebno"
+									value="${rebno}">
 							</div>
-						</div>						
+						</div>
 						<div class="row">
 							<div class="col-md-12">
 								<br>
-								<div class="form-group">
-									<textarea class="form-control" rows="20" name="content"
-										placeholder="답변을 입력해주세요"></textarea>
-								</div>
+								<c:choose>
+									<c:when test="${avo.writer == null }">
+										<div class="form-group">
+											<textarea class="form-control" rows="20" name="content"
+												placeholder="답변을 입력해주세요"></textarea>
+										</div>
+									</c:when>
+									<c:otherwise>
+										<div class="form-group">
+											<textarea class="form-control" rows="20" name="content"
+												placeholder="답변을 입력해주세요" readonly="readonly">${avo.content }</textarea>
+										</div>
+									</c:otherwise>
+								</c:choose>
 							</div>
-						</div>						
+						</div>
 						<div class="row mt-3">
 							<div class="text-end">
-								<button type="submit" formaction="answer_insert.do" formmethod="post"
-									class="btn btn-primary btn btn-block btn-my" onclick="">확인</button>
-								<button type="button" class="btn btn-primary btn btn-block btn-my" 
-									onclick="location.href='adminPage_querylist'">취소</button>
+								<c:choose>
+									<c:when test="${avo.writer == null }">
+										<button type="submit" formaction="answer_insert.do"
+											formmethod="post"
+											class="btn btn-primary btn btn-block btn-my" onclick="">확인</button>
+										<button type="button"
+											class="btn btn-primary btn btn-block btn-my"
+											onclick="location.href='adminPage_querylist'">취소</button>
+									</c:when>
+									<c:otherwise>
+										<button type="button"
+											class="btn btn-primary btn btn-block btn-my"
+											onclick="location.href='adminPage_querylist'">취소</button>
+									</c:otherwise>
+								</c:choose>
 							</div>
 						</div>
 					</div>
