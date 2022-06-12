@@ -38,8 +38,9 @@
 								class="bi bi-card-text fs-5"></i> 전기차 소개 </a>
 						</li>
 						<li data-tab="search_station" class="nav-item tabmenu"><a
-							class="nav-link" aria-current="page" href="search_station_default"><i
-								class="bi bi-card-text fs-5"></i> 전국 충전소 검색하기 </a></li>
+							class="nav-link" aria-current="page"
+							href="search_station_default"><i class="bi bi-card-text fs-5"></i>
+								전국 충전소 검색하기 </a></li>
 
 						<li data-tab="community_notice" class="nav-item tabmenu""><a
 							class="nav-link" aria-current="page" href="community_notice"><i
@@ -48,8 +49,9 @@
 							class="nav-link" aria-current="page" href="community_review"><i
 								class="bi bi-chat-text fs-5"></i> 이용후기 </a></li>
 						<li data-tab="community_talkboard" class="nav-item tabmenu"">
-							<a class="nav-link" aria-current="page" href="community_talkboard"><i
-								class="bi bi-card-text fs-5"></i> 자유게시판 </a>
+							<a class="nav-link" aria-current="page"
+							href="community_talkboard"><i class="bi bi-card-text fs-5"></i>
+								자유게시판 </a>
 						</li>
 					</ul>
 				</div>
@@ -222,8 +224,7 @@
 								검색</button>
 						</div>
 					</div>
-					<div class="col-md-8"></div>
-					<div class="col-md-1">
+					<div class="col-md-9 text-end">
 						<a href="${root }board_write?board_info_idx=${board_info_idx}"
 							class="btn btn-primary">글쓰기</a>
 					</div>
@@ -274,10 +275,10 @@
 						</ul>
 					</div>
 
-					<div class="text-right">
+					<%-- <div class="text-right">
 						<a href="${root }board_write?board_info_idx=${board_info_idx}"
 							class="btn btn-primary">글쓰기</a>
-					</div>
+					</div> --%>
 				</div>
 			</main>
 		</div>

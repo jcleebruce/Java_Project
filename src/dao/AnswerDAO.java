@@ -114,26 +114,25 @@ public class AnswerDAO {
 		return result;
 	}
 	
-	public QueryVO oneQuery(int bno, String writer) {
-		QueryVO qvo=new QueryVO();
+	public AnswerVO oneQuery(int bno) {
+		AnswerVO avo=new AnswerVO();
 		
 		try {
-			String sql="select * from "+ tbl +" where bno=? and writer=?";
+			String sql="select * from "+ tbl +" where re_bno=?";
 			
 			conn=DBManager.getConnection();
 			pstmt=conn.prepareStatement(sql);
 			
 			pstmt.setInt(1, bno);
-			pstmt.setString(2, writer);
 			
 			rs=pstmt.executeQuery();
 			
 			if(rs.next()) {
-				qvo.setBno(rs.getInt("bno"));
-				qvo.setContent(rs.getString("content"));
-				qvo.setRegdate(rs.getDate("regdate"));
-				qvo.setTitle(rs.getString("title"));
-				qvo.setWriter(rs.getString("writer"));
+				avo.setBno(rs.getInt("bno"));
+				avo.setContent(rs.getString("content"));
+				avo.setRegdate(rs.getDate("regdate"));
+				avo.setTitle(rs.getString("title"));
+				avo.setWriter(rs.getString("writer"));
 			}
 			
 		}catch (Exception e) {
@@ -142,7 +141,7 @@ public class AnswerDAO {
 			DBManager.close(conn, pstmt, rs);
 		}
 		
-		return qvo;
+		return avo;
 	}
 	
 	public ArrayList<AnswerVO> allQuery(Criteria cri){

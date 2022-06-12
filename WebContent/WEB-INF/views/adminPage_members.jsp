@@ -71,7 +71,7 @@
 								<tr>
 									<td class="tit">
 										<div class="text-wrap">
-											<a class="subject-link"
+											<a class="nav-link" style="color: #222" 
 												href="adminPage_memberInfo?id=${member.id}"> <span
 												class="category"></span> ${member.id}
 											</a>

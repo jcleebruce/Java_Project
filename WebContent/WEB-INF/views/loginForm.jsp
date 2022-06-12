@@ -72,18 +72,18 @@ body {
 					for="floatingPassword">비밀번호</label>
 			</div>
 
-			<div class="checkbox mb-3">
+			<!-- <div class="checkbox mb-3">
 				<label> <input type="checkbox" value="remember-me">
 					Remember me
 				</label>
-			</div>
+			</div> -->
 			<button class="w-100 btn btn-lg btn-primary" type="submit">로그인</button>
 		</form>
 		<button class="w-100 btn btn-lg btn-secondary mt-3" type="button"
 			onclick="location.href='join'">
 			회원가입
 		</button>
-		<p class="mt-5 mb-3 text-muted">© 2017–2022</p>
+		<p class="mt-5 mb-3 text-muted">© 2022–2022</p>
 
 	</main>
 

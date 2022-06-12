@@ -152,7 +152,7 @@ a, button, input[type=submit], input[type=button], input[type=reset] {
 							<c:when test="${info.stat  == '3'}"><span style="color: #ff6600">충전중</span></c:when>
 							<c:when test="${info.stat  == '4'}"><span style="color: #ff0088">운영중지</span></c:when>
 							<c:when test="${info.stat  == '5'}"><span style="color: #ff0088">점검중</span></c:when>
-							<c:otherwise>상태미확인</c:otherwise>
+							<c:otherwise><span style="color: #ff0088">상태미확인</span></c:otherwise>
 							</c:choose>
 							</td>
 							<td style="text-align: center;">

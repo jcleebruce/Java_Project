@@ -99,7 +99,7 @@
 								<div class="col-md-6 mb-3">
 									<label for="nickname">별명</label> <input type="text"
 										class="form-control" name="nickName" id="nickName"
-										placeholder="" value="${userinfo.nickName }" required>
+										placeholder="" value="${userinfo.nickName }" required readonly>
 									<div class="invalid-feedback">별명을 입력해주세요.</div>
 								</div>
 							</div>
@@ -111,17 +111,17 @@
 							</div>
 
 							<div class="row">
-								<div class="col-md-9 mb-3">
+								<div class="col-md-12 mb-3">
 									<label for="address">주소</label> <input type="text"
 										class="form-control" name="address1" id="address"
 										placeholder="서울특별시 강남구" value="${userinfo.address1 }" required>
 									<div class="invalid-feedback">주소를 입력해주세요.</div>
 								</div>
-								<div class="col-md-3 mb-3">
+								<!-- <div class="col-md-3 mb-3">
 									<button class="btn btn-primary btn-block"
 										style="margin-top: 24px;" onclick="onPostCode()">주소
 										검색</button>
-								</div>
+								</div> -->
 							</div>
 
 							<div class="mb-3">
@@ -173,7 +173,7 @@
 										class="btn btn-primary btn-lg btn-block btn-my" onclick="">수정</button>
 								</div>
 								<div class="col-lg-6 col-sm-6 text-lg-middle text-center">
-									<button type="submit" formaction="delete.do" formmethod="post"
+									<button type="submit" formaction="admin_delete.do" formmethod="post"
 										class="btn btn-primary btn-lg btn-block btn-my" onclick="">삭제</button>
 								</div>
 							</div>

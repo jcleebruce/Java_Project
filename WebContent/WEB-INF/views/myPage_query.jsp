@@ -38,7 +38,7 @@
 							href="myPage_querylist"><i class="bi bi-chat-text fs-5"></i>
 								문의 내역 </a></li>
 						<li data-tab="myPage_query" class="nav-item tabmenu"><a
-							class="nav-link" aria-current="page" href="myPage_query"><i
+							class="nav-link active" aria-current="page" href="myPage_query"><i
 								class="bi bi-chat-text fs-5"></i> 문의 하기 </a></li>
 						<li data-tab="myPage_review" class="nav-item tabmenu"><a
 							class="nav-link" aria-current="page" href="myPage_review"><i
