@@ -403,7 +403,7 @@ public class DBMaker {
 		region[idx++] = "29"; //광주광역시
 		region[idx++] = "30"; //대전광역시 //삽입완료
 		region[idx++] = "31"; //울산광역시
-		//region[idx++] = "36"; //세종특별자치시
+		region[idx++] = "36"; //세종특별자치시
 		region[idx++] = "41"; //경기도
 		region[idx++] = "42"; //강원도
 		region[idx++] = "43"; //충청북도
